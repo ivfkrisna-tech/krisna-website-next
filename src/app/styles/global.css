@@ -1,0 +1,2 @@
+﻿/* Global reset only - each page imports its own CSS */
+*, *::before, *::after { box-sizing: border-box; }

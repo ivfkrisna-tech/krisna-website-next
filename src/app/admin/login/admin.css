@@ -1,0 +1,77 @@
+/* Reset & Base */
+* { box-sizing: border-box; }
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif; 
+}
+
+/* Left side (Form) */
+.login-side {
+    width: 50%;
+    margin :50px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 120px;
+    background: #ffffff;
+}
+
+.login-side h2 { font-size: 2.5rem; margin-bottom: 10px; color: #111; }
+.login-side p { color: #666; margin-bottom: 30px; }
+
+.input-field {
+    width: 100%;
+    padding: 16px;
+    margin-top: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: #0f172a;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s;
+}
+
+/* Right side (Dark Panel) */
+.branding-side {
+    width: 50%;
+    margin: 50px;
+    border-radius: 25px;
+    background: #0a0a0a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+}
+
+.system-badge {
+    border: 1px solid #334155;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.branding-side h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 700; }
+.branding-side p { color: #94a3b8; line-height: 1.6; font-size: 1.1rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .branding-side { display: none; }
+    .login-side { width: 100%; padding: 40px; }
+}

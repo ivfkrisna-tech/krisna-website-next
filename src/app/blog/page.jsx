@@ -1,0 +1,62 @@
+import BlogCard from '@/components/BlogCard';
+
+export const metadata = {
+  title: 'Fertility Insights & IVF Blogs | Krishna IVF Jaipur',
+  description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krishna IVF Group, Jaipur.',
+};
+
+// 1. Data fetch karne ke liye async function
+async function getBlogs() {
+  
+  const res = await fetch('http://127.0.0.1:5000/api/blogs', { 
+    cache: 'no-store' 
+  });
+  
+  if (!res.ok) {
+    throw new Error('Failed to fetch blogs');
+  }
+  return res.json();
+}
+
+export default async function BlogPage() {
+ 
+  const blogs = await getBlogs();
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Fertility Insights & Stories",
+    "description": "Expert advice and articles on IVF and fertility treatments.",
+    "publisher": {
+      "@type": "MedicalBusiness",
+      "name": "Krishna IVF Group"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
+      <main>
+        <section className="blog-page-header"> 
+          <h1 style={{ fontWeight: '800' }}>Fertility Insights & Stories</h1>
+          <p style={{ maxWidth: '700px', margin: '15px auto 0' }}>
+            Expert advice, latest medical breakthroughs, and heartwarming success stories to guide you on your journey to parenthood.
+          </p>
+        </section>
+
+        <section className="blog-container">
+          <div className="blog-grid">
+            {/* 3. Database blogs ko map karein */}
+            {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}

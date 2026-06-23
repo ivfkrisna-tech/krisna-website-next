@@ -4,7 +4,9 @@ import TOC from '@/components/TOC';
 import * as cheerio from 'cheerio'; // Import cheerio
 
 async function getBlog(id) {
-  const res = await fetch(`http://127.0.0.1:5000/api/blogs/${id}`, { cache: 'no-store' });
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  
+  const res = await fetch(`${baseUrl}/api/blogs/${id}`, { cache: 'no-store' });
   if (!res.ok) return null;
   return res.json();
 }
@@ -61,7 +63,7 @@ export default async function BlogDetail({ params }) {
         <aside className="blog-detail-sidebar">
           {blog.fileUrl && (
             <img 
-              src={blog.fileUrl?.startsWith('http') ? blog.fileUrl : `http://127.0.0.1:5000/uploads/${blog.fileUrl}`} 
+              src={blog.fileUrl?.startsWith('http') ? blog.fileUrl : `/uploads/${blog.fileUrl}`} 
               alt={blog.title} 
               className="sidebar-featured-img" 
             />

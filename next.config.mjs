@@ -7,11 +7,9 @@ const nextConfig = {
       { protocol: 'https', hostname: 'cdn.pixabay.com', pathname: '/**' },
       { protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' },
       { protocol: 'https', hostname: 'plus.unsplash.com', pathname: '/**' },
-      { protocol: 'http', hostname: '127.0.0.1', port: '5000', pathname: '/uploads/**' },
     ],
   },
   
-  // Headers ko yahan rakhein, lekin * ke bajaye simple config use karein
   async headers() {
     return [
       {

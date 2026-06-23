@@ -17,7 +17,7 @@ export default function AddBlog() {
       formData.append('image', file);
 
       // 1. Upload Image
-      const uploadRes = await fetch('http://127.0.0.1:5000/api/upload', {
+      const uploadRes = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
@@ -25,7 +25,7 @@ export default function AddBlog() {
       const imageUrl = uploadData.filename;
 
       // 2. Save Blog
-      await fetch('http://127.0.0.1:5000/api/blogs', {
+      await fetch('/api/blogs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, content, fileUrl: imageUrl }),

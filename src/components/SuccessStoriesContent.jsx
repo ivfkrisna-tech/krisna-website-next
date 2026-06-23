@@ -26,7 +26,7 @@ export default function SuccessStoriesContent({ initialStories }) {
               <div key={story._id} className="story-card" style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '10px' }}>
                 {story.fileUrl && (
                   <img 
-                    src={`http://127.0.0.1:5000/uploads/${story.fileUrl}`} 
+                    src={`/uploads/${story.fileUrl}`} 
                     alt={story.title} 
                     style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px', marginBottom: '15px' }}
                   />

@@ -7,7 +7,7 @@ export default function FAQPage() {
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/faqs')
+    fetch('/api/faqs')
       .then(res => res.json())
       .then(data => setFaqs(data))
       .catch(err => console.error(err));

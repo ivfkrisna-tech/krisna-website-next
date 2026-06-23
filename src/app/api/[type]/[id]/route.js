@@ -2,18 +2,51 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import { Blog, FAQ, Story } from '@/models/Data';
 
-const getModel = (type) => { /* ... same as above ... */ };
+const getModel = (type) => {
+    if (type === 'blogs') return Blog;
+    if (type === 'faqs') return FAQ;
+    if (type === 'success_stories') return Story;
+    return null;
+};
 
 export async function GET(req, { params }) {
+    try {
+        const { type, id } = await params;
+        await connectDB();
+        
+        const Model = getModel(type);
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
+        const item = await Model.findById(id);
+        if (!item) return NextResponse.json({ error: 'Item not found' }, { status: 404 });
+        
+        return NextResponse.json(item);
+    } catch (error) {
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
+
+export async function PUT(req, { params }) {
     const { type, id } = await params;
     await connectDB();
-    const item = await getModel(type).findById(id);
-    return NextResponse.json(item);
+    const body = await req.json();
+    const updatedItem = await getModel(type).findByIdAndUpdate(id, body, { new: true });
+    return NextResponse.json(updatedItem);
 }
 
 export async function DELETE(req, { params }) {
-    const { type, id } = await params;
-    await connectDB();
-    await getModel(type).findByIdAndDelete(id);
-    return NextResponse.json({ message: "Deleted" });
+    try {
+        const { type, id } = await params;
+        await connectDB();
+        
+        const Model = getModel(type);
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
+        const deletedItem = await Model.findByIdAndDelete(id);
+        if (!deletedItem) return NextResponse.json({ error: 'Item not found' }, { status: 404 });
+        
+        return NextResponse.json({ message: "Item deleted successfully" });
+    } catch (error) {
+        return NextResponse.json({ error: 'Deletion failed' }, { status: 500 });
+    }
 }

@@ -8,8 +8,8 @@ export default function BlogCard({ blog }) {
   const imageUrl = blog.fileUrl?.startsWith('http') 
   ? blog.fileUrl 
   : blog.fileUrl?.includes('uploads') 
-    ? `http://127.0.0.1:5000/${blog.fileUrl.replace(/^\/+/, '')}` 
-    : `http://127.0.0.1:5000/uploads/${blog.fileUrl}`;
+    ? `/${blog.fileUrl.replace(/^\/+/, '')}` 
+    : `/uploads/${blog.fileUrl}`;
 
   return (
     <div className="blog-card">

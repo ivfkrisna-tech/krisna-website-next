@@ -26,7 +26,7 @@ export default function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/all-data');
+      const res = await fetch('/api/all-data');
       if (res.ok) {
         const data = await res.json();
         setStats(data);
@@ -77,7 +77,7 @@ function ContentManager({ type, refreshStats }) {
 
   const loadData = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:5000/api/${type}`);
+      const res = await fetch(`/api/${type}`);
       if (res.ok) {
         const data = await res.json();
         setItems(Array.isArray(data) ? data : []);
@@ -95,7 +95,7 @@ function ContentManager({ type, refreshStats }) {
       if (file) {
         const fd = new FormData();
         fd.append('image', file);
-        const res = await fetch('http://127.0.0.1:5000/api/upload', { method: 'POST', body: fd });
+        const res = await fetch('/api/upload', { method: 'POST', body: fd });
         const data = await res.json();
         fileUrl = data.filename;
       }
@@ -107,7 +107,7 @@ function ContentManager({ type, refreshStats }) {
         ...(type === 'success_stories' && { author }) 
       };
 
-      const url = editId ? `http://127.0.0.1:5000/api/${type}/${editId}` : `http://127.0.0.1:5000/api/${type}`;
+      const url = editId ? `/api/${type}/${editId}` : `/api/${type}`;
       const method = editId ? 'PUT' : 'POST';
 
       const res = await fetch(url, {
@@ -132,7 +132,7 @@ const handleDelete = async (id) => {
   if (!window.confirm("DO YOU WANT TO DELETE ")) return;
 
   try {
-    const res = await fetch(`http://127.0.0.1:5000/api/${type}/${id}`, {
+    const res = await fetch(`/api/${type}/${id}`, {
       method: 'DELETE',
     });
 
@@ -182,7 +182,7 @@ const handleDelete = async (id) => {
       {/* IMAGE PREVIEW */}
       {item.fileUrl && (
         <img 
-          src={`http://127.0.0.1:5000/uploads/${item.fileUrl}`} 
+          src={`/uploads/${item.fileUrl}`} 
           alt="preview" 
           style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px' }} 
         />

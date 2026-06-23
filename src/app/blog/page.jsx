@@ -7,15 +7,17 @@ export const metadata = {
 
 // 1. Data fetch karne ke liye async function
 async function getBlogs() {
-  
-  const res = await fetch('http://127.0.0.1:5000/api/blogs', { 
-    cache: 'no-store' 
-  });
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch blogs');
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/blogs`, { cache: 'no-store' });
+    
+    if (!res.ok) return []; // Error throw karne ke bajaye empty array return karein
+    
+    return res.json();
+  } catch (error) {
+    console.error("Fetch failed:", error);
+    return []; // Database connect na ho to UI crash nahi hoga
   }
-  return res.json();
 }
 
 export default async function BlogPage() {

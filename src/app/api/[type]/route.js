@@ -34,3 +34,20 @@ export async function GET(req, { params }) {
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
+export async function POST(req, { params }) {
+    try {
+        const { type } = await params;
+        await connectDB();
+        
+        const Model = getModel(type);
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
+        const body = await req.json();
+        const newItem = await Model.create(body);
+        
+        return NextResponse.json(newItem, { status: 201 });
+    } catch (error) {
+        console.error("POST ERROR:", error);
+        return NextResponse.json({ error: 'Failed to create item' }, { status: 500 });
+    }
+}

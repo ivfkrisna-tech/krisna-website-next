@@ -1,18 +1,14 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.Mongo_url;
+// Direct Connection String - Bypasses both .env issues and the querySrv DNS bug
+//const MONGODB_URI = "mongodb://ivfkrisna_db_user:4ATyrK7dVMuujmyC@ac-wdoxqjh-shard-00-00.3knwey6.mongodb.net:27017,ac-wdoxqjh-shard-00-01.3knwey6.mongodb.net:27017,ac-wdoxqjh-shard-00-02.3knwey6.mongodb.net:27017/krisna_admin?ssl=true&replicaSet=atlas-wdoxqjh-shard-0&authSource=admin&retryWrites=true&w=majority";
+
+const MONGODB_URI = "mongodb://ivfkrisna_db_user:4ATyrK7dVMuujmyC@ac-wdoxqjh-shard-00-00.3knwey6.mongodb.net:27017/krisna_admin?ssl=true&authSource=admin&retryWrites=true&w=majority";
 
 if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the Mongo_url environment variable inside .env.local'
-  );
+  throw new Error('Please define the Mongo_url environment variable inside .env.local');
 }
 
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
 let cached = global.mongoose;
 
 if (!cached) {

@@ -86,46 +86,46 @@ function ContentManager({ type, refreshStats }) {
   };
 
   useEffect(() => { loadData(); }, [type]);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    let finalFileUrl = "";
 
- const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      let fileUrl = '';
-      if (file) {
-        const fd = new FormData();
-        fd.append('image', file);
-        const res = await fetch('/api/upload', { method: 'POST', body: fd });
-        const data = await res.json();
-        fileUrl = data.filename;
-      }
+    // Agar nayi file upload karni hai
+    if (file) {
+      const fd = new FormData();
+      fd.append('image', file);
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+      finalFileUrl = data.filename;
+    }
 
-      const payload = { 
-        title, 
-        content, 
-        fileUrl, 
-        ...(type === 'success_stories' && { author }) 
-      };
-
-      const url = editId ? `/api/${type}/${editId}` : `/api/${type}`;
-      const method = editId ? 'PUT' : 'POST';
-
-      const res = await fetch(url, {
-        method: method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+   const payload = { 
+  title, 
+  content, 
+  ...(type === 'success_stories' && { author }) 
+};
 
 
-      if (res.ok) {
-        alert("Operation Successful!");
-        setEditId(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
-        loadData();
-        if (refreshStats) refreshStats();
-      }
-    } catch (err) { alert("Failed to save data"); }
-    finally { setLoading(false); }
-  };
+if (finalFileUrl) {
+  payload.fileUrl = finalFileUrl;
+}
+    const res = await fetch(editId ? `/api/${type}/${editId}` : `/api/${type}`, {
+      method: editId ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      alert("Operation Successful!");
+      setEditId(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
+      loadData();
+      if (refreshStats) refreshStats();
+    }
+  } catch (err) { alert("Failed to save data"); }
+  finally { setLoading(false); }
+};
 
 
 const handleDelete = async (id) => {

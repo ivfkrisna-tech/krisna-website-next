@@ -27,11 +27,22 @@ export async function GET(req, { params }) {
 }
 
 export async function PUT(req, { params }) {
-    const { type, id } = await params;
-    await connectDB();
-    const body = await req.json();
-    const updatedItem = await getModel(type).findByIdAndUpdate(id, body, { new: true });
-    return NextResponse.json(updatedItem);
+    try {
+        const { type, id } = await params;
+        await connectDB();
+        const body = await req.json();
+        
+        const Model = getModel(type);
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
+        const updatedItem = await Model.findByIdAndUpdate(id, body, { new: true });
+        
+        if (!updatedItem) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+        
+        return NextResponse.json(updatedItem);
+    } catch (error) {
+        return NextResponse.json({ error: 'Update failed' }, { status: 500 });
+    }
 }
 
 export async function DELETE(req, { params }) {

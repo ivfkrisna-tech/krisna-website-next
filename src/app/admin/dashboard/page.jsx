@@ -1,14 +1,12 @@
-"use client"; 
+"use client";
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import './dashboard.css';
 
-// Editor component ko safely load karein
 const Editor = dynamic(() => import('@/components/Editor'), { ssr: false });
 
-// 1. MAIN DASHBOARD COMPONENT (Yahi default export hai)
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [stats, setStats] = useState({ blogs: [], faqs: [], stories: [] });
@@ -65,14 +63,13 @@ export default function Dashboard() {
   );
 }
 
-// 2. CONTENT MANAGER COMPONENT (Dashboard file ke andar hi hai)
 function ContentManager({ type, refreshStats }) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [author, setAuthor] = useState(''); 
+  const [author, setAuthor] = useState('');
   const [file, setFile] = useState(null);
-  const [editId, setEditId] = useState(null);
+  const [editSlug, setEditSlug] = useState(null); // ID se Slug par move kiya
   const [loading, setLoading] = useState(false);
 
   const loadData = async () => {
@@ -86,132 +83,79 @@ function ContentManager({ type, refreshStats }) {
   };
 
   useEffect(() => { loadData(); }, [type]);
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    let finalFileUrl = "";
 
-    // Agar nayi file upload karni hai
-    if (file) {
-      const fd = new FormData();
-      fd.append('image', file);
-      const res = await fetch('/api/upload', { method: 'POST', body: fd });
-      const data = await res.json();
-      finalFileUrl = data.filename;
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      let finalFileUrl = "";
+      if (file) {
+        const fd = new FormData();
+        fd.append('image', file);
+        const res = await fetch('/api/upload', { method: 'POST', body: fd });
+        const data = await res.json();
+        finalFileUrl = data.filename;
+      }
 
-   const payload = { 
-  title, 
-  content, 
-  ...(type === 'success_stories' && { author }) 
+      const generatedSlug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+            const payload = {
+        title,
+        slug: editSlug || generatedSlug, // Agar edit ho raha hai, toh wahi slug rahega
+        content,
+  ...(type === 'success_stories' && { author })
 };
 
+      if (finalFileUrl) payload.fileUrl = finalFileUrl;
 
-if (finalFileUrl) {
-  payload.fileUrl = finalFileUrl;
-}
-    const res = await fetch(editId ? `/api/${type}/${editId}` : `/api/${type}`, {
-      method: editId ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+      const res = await fetch(editSlug ? `/api/${type}/${editSlug}` : `/api/${type}`, {
+        method: editSlug ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
-    if (res.ok) {
-      alert("Operation Successful!");
-      setEditId(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
-      loadData();
-      if (refreshStats) refreshStats();
-    }
-  } catch (err) { alert("Failed to save data"); }
-  finally { setLoading(false); }
-};
+      if (res.ok) {
+        alert("Operation Successful!");
+        setEditSlug(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
+        loadData();
+        if (refreshStats) refreshStats();
+      }
+    } catch (err) { alert("Failed to save data"); }
+    finally { setLoading(false); }
+  };
 
+  const handleDelete = async (slug) => {
+    if (!window.confirm("DO YOU WANT TO DELETE THIS ITEM?")) return;
+    try {
+      const res = await fetch(`/api/${type}/${slug}`, { method: 'DELETE' });
+      if (res.ok) {
+        alert("Item deleted successfully!");
+        loadData();
+        if (refreshStats) refreshStats();
+      }
+    } catch (err) { console.error("Delete Error:", err); }
+  };
 
-const handleDelete = async (id) => {
-  if (!window.confirm("DO YOU WANT TO DELETE ")) return;
-
-  try {
-    const res = await fetch(`/api/${type}/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (res.ok) {
-      alert("Item deleted successfully!");
-      loadData(); // List refresh 
-      if (refreshStats) refreshStats(); // Stats update
-    } else {
-      alert("Delete failed!");
-    }
-  } catch (err) {
-    console.error("Delete Error:", err);
-  }
-};
   return (
     <div className="data-section">
       <h3>Manage {type.replace('_', ' ').toUpperCase()}</h3>
       <form onSubmit={handleSubmit} className="admin-form">
-        
-        {/* Title / Question Field */}
-        <input 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
-          placeholder={type === 'faqs' ? "Enter Question" : "Enter Title"} 
-          required 
-        />
-
-        {/* Author Field (Sirf Stories ke liye dikhega) */}
-        {type === 'success_stories' && (
-          <input 
-            value={author} 
-            onChange={(e) => setAuthor(e.target.value)} 
-            placeholder="Name (e.g. Anjali & Rajesh Verma)" 
-          />
-        )}
-
-        {/* Editor for Answer/Story Content */}
+        <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder={type === 'faqs' ? "Enter Question" : "Enter Title"} required />
+        {type === 'success_stories' && <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Name (e.g. Anjali & Rajesh Verma)" />}
         <Editor value={content} onChange={setContent} />
-        
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit" disabled={loading}>{loading ? 'Processing...' : (editId ? 'Update' : 'Publish')}</button>
+        <button type="submit" disabled={loading}>{loading ? 'Processing...' : (editSlug ? 'Update' : 'Publish')}</button>
       </form>
 
       <div className="items-list">
-  {items.map((item) => (
-    <div key={item._id} className="card" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px', borderBottom: '1px solid #ddd' }}>
-      {/* IMAGE PREVIEW */}
-      {item.fileUrl && (
-        <img 
-          src={`/uploads/${item.fileUrl}`} 
-          alt="preview" 
-          style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px' }} 
-        />
-      )}
-      
-      <span style={{ flexGrow: 1 }}>{item.title}</span>
-      
-      <div className="admin-actions">
-  <button 
-    className="btn-edit"
-    onClick={() => { 
-      setEditId(item._id); 
-      setTitle(item.title); 
-      setContent(item.content); 
-      window.scrollTo(0, 0); 
-    }}
-  >
-    Edit
-  </button>
-  
-  <button 
-    className="btn-delete"
-    onClick={() => handleDelete(item._id)} 
-  >
-    Delete
-  </button>
-</div>
-    </div>
-    
+        {items.map((item) => (
+          <div key={item.slug || item._id} className="card" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px', borderBottom: '1px solid #ddd' }}>
+            {item.fileUrl && <img src={`/uploads/${item.fileUrl}`} alt="preview" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px' }} />}
+            <span style={{ flexGrow: 1 }}>{item.title}</span>
+            <div className="admin-actions">
+              <button className="btn-edit" onClick={() => { setEditSlug(item.slug); setTitle(item.title); setContent(item.content); if(item.author) setAuthor(item.author); window.scrollTo(0, 0); }}>Edit</button>
+              <button className="btn-delete" onClick={() => handleDelete(item.slug)}>Delete</button>
+            </div>
+          </div>
         ))}
       </div>
     </div>

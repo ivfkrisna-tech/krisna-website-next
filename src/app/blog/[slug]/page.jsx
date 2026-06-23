@@ -1,22 +1,33 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import TOC from '@/components/TOC';
-import * as cheerio from 'cheerio'; // Import cheerio
+import * as cheerio from 'cheerio';
 
-async function getBlog(id) {
+
+async function getBlog(slug) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  
-  const res = await fetch(`${baseUrl}/api/blogs/${id}`, { cache: 'no-store' });
-  if (!res.ok) return null;
-  return res.json();
+  try {
+    const res = await fetch(`${baseUrl}/api/blogs/${slug}`, { next: { revalidate: 3600 } });
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    return null;
+  }
 }
+
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = await getBlog(slug);
+  
+  if (!blog) return { title: 'Blog Not Found | Krishna IVF' };
+
   return {
-    title: blog ? `${blog.title} | Krishna IVF` : 'Blog Not Found',
-    description: blog?.title ? `Read more about ${blog.title}.` : 'Blog post at Krishna IVF',
+    title: `${blog.title} | Krishna IVF`,
+    description: blog.content?.replace(/<[^>]+>/g, '').substring(0, 150) || 'Read more at Krishna IVF',
+    alternates: {
+      canonical: `https://krishnaivf.com/blog/${slug}`,
+    },
   };
 }
 
@@ -26,7 +37,7 @@ export default async function BlogDetail({ params }) {
   
   if (!blog) notFound();
 
-  // --- NAYA LOGIC: Cheerio se headings aur IDs generate karna ---
+  // Cheerio se headings process karna aur IDs inject karna
   const $ = cheerio.load(blog.content || '');
   const headings = [];
   $('h2, h3').each((i, el) => {
@@ -36,15 +47,16 @@ export default async function BlogDetail({ params }) {
     headings.push({ id, text, level: el.tagName });
   });
   const processedContent = $.html();
-  // -----------------------------------------------------------
 
   return (
     <main>
+      {/* Google Schema Markup for SEO */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": blog.title,
-        "author": { "@type": "Organization", "name": "Krishna IVF Group" }
+        "author": { "@type": "Organization", "name": "Krishna IVF Group" },
+        "datePublished": blog.createdAt
       })}} />
 
       <div className="blog-detail-hero">
@@ -56,7 +68,6 @@ export default async function BlogDetail({ params }) {
           <h2 className="detail-main-title">{blog.title}</h2>
           <div className="title-underline"></div>
           
-          {/* processedContent ka use karein taaki IDs apply ho jayein */}
           <div dangerouslySetInnerHTML={{ __html: processedContent }} />
         </article>
 
@@ -69,7 +80,6 @@ export default async function BlogDetail({ params }) {
             />
           )}
           
-          {/* Dynamic headings pass karein */}
           {headings.length > 0 && <TOC headings={headings} />}
         </aside>
       </div>

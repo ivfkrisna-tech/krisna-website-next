@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  // Rule 3: Hook ko hamesha component function ke top par define karein
+  
   const router = useRouter(); 
 
   const handleLogin = async (e) => {

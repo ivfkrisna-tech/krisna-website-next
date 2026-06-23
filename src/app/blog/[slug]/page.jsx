@@ -4,13 +4,27 @@ import TOC from '@/components/TOC';
 import * as cheerio from 'cheerio';
 
 
+import connectDB from '@/lib/mongodb';
+import { Blog } from '@/models/Data';
+import mongoose from 'mongoose';
+
 async function getBlog(slug) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   try {
-    const res = await fetch(`${baseUrl}/api/blogs/${slug}`, { next: { revalidate: 3600 } });
-    if (!res.ok) return null;
-    return res.json();
+    await connectDB();
+    
+    let blog = null;
+    if (mongoose.Types.ObjectId.isValid(slug)) {
+        blog = await Blog.findById(slug).lean();
+    }
+    if (!blog) {
+        blog = await Blog.findOne({ slug: slug }).lean();
+    }
+    
+    if (!blog) return null;
+    
+    return JSON.parse(JSON.stringify(blog));
   } catch (error) {
+    console.error("Database fetch failed:", error);
     return null;
   }
 }

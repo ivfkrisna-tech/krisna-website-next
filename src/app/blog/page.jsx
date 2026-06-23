@@ -5,17 +5,19 @@ export const metadata = {
   description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krishna IVF Group, Jaipur.',
 };
 
+import connectDB from '@/lib/mongodb';
+import { Blog } from '@/models/Data';
+
 // 1. Data fetch karne ke liye async function
 async function getBlogs() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/blogs`, { cache: 'no-store' });
+    await connectDB();
+    const blogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
     
-    if (!res.ok) return []; // Error throw karne ke bajaye empty array return karein
-    
-    return res.json();
+    // Convert ObjectIds to strings and clean up the object for Next.js Client Components
+    return JSON.parse(JSON.stringify(blogs));
   } catch (error) {
-    console.error("Fetch failed:", error);
+    console.error("Database fetch failed:", error);
     return []; // Database connect na ho to UI crash nahi hoga
   }
 }

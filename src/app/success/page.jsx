@@ -1,19 +1,15 @@
 import SuccessStoriesContent from "@/components/SuccessStoriesContent";
 
+import connectDB from '@/lib/mongodb';
+import { Story } from '@/models/Data';
+
 async function getStories() {
-  
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  
   try {
-    
-    const res = await fetch(`${baseUrl}/api/success_stories`, { cache: 'no-store' });
-    
-    if (!res.ok) throw new Error('Network response was not ok');
-    
-    const data = await res.json();
-    return data;
+    await connectDB();
+    const stories = await Story.find({}).sort({ createdAt: -1 }).lean();
+    return JSON.parse(JSON.stringify(stories));
   } catch (error) {
-    console.error("Fetch failed:", error);
+    console.error("Database fetch failed:", error);
     return [];
   }
 }

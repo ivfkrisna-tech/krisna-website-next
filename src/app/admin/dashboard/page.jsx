@@ -152,8 +152,8 @@ function ContentManager({ type, refreshStats }) {
             {item.fileUrl && <img src={`/uploads/${item.fileUrl}`} alt="preview" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px' }} />}
             <span style={{ flexGrow: 1 }}>{item.title}</span>
             <div className="admin-actions">
-              <button className="btn-edit" onClick={() => { setEditSlug(item.slug); setTitle(item.title); setContent(item.content); if(item.author) setAuthor(item.author); window.scrollTo(0, 0); }}>Edit</button>
-              <button className="btn-delete" onClick={() => handleDelete(item.slug)}>Delete</button>
+              <button className="btn-edit" onClick={() => { setEditSlug(item.slug || item._id); setTitle(item.title); setContent(item.content); if(item.author) setAuthor(item.author); window.scrollTo(0, 0); }}>Edit</button>
+              <button className="btn-delete" onClick={() => handleDelete(item.slug || item._id)}>Delete</button>
             </div>
           </div>
         ))}

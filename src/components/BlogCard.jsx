@@ -31,7 +31,7 @@ export default function BlogCard({ blog }) {
   }...
 </p>
       
-      <Link href={`/blog/${blog._id}`} className="read-more-link">
+      <Link href={`/blog/${blog.slug || blog._id}`} className="read-more-link">
   READ MORE <i className="fa-solid fa-angles-right"></i>
 </Link>
     </div>

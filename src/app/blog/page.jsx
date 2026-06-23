@@ -54,7 +54,7 @@ export default async function BlogPage() {
           <div className="blog-grid">
             {/* 3. Database blogs ko map karein */}
             {blogs.map((blog) => (
-              <BlogCard key={blog._id} blog={blog} />
+              <BlogCard key={blog.slug || blog._id} blog={blog} />
             ))}
           </div>
         </section>

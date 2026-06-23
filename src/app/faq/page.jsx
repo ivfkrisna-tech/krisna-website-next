@@ -37,7 +37,7 @@ export default function FAQPage() {
               <h2 className="category-title">{cat}</h2>
               
               {faqs.filter(f => (f.category || "General & First Steps") === cat).map(faq => (
-                <details key={faq._id} className="faq-item">
+                <details key={faq.slug || faq._id} className="faq-item">
                   <summary>{faq.title}</summary>
                   {/* .faq-content class CSS mein define hai, yahan wrapper use kar rahe hain */}
                   <div className="faq-content" dangerouslySetInnerHTML={{ __html: faq.content }} />

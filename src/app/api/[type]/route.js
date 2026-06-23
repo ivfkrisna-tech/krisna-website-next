@@ -43,6 +43,17 @@ export async function POST(req, { params }) {
         if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
 
         const body = await req.json();
+
+        // Auto-generate slug if not provided
+        let baseSlug = body.slug || body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        let slug = baseSlug;
+        let counter = 1;
+        while (await Model.findOne({ slug })) {
+             slug = `${baseSlug}-${counter}`;
+             counter++;
+        }
+        body.slug = slug;
+
         const newItem = await Model.create(body);
         
         return NextResponse.json(newItem, { status: 201 });

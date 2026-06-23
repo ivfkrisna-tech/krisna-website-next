@@ -23,7 +23,7 @@ export default function SuccessStoriesContent({ initialStories }) {
           
           {stories.length > 0 ? (
             stories.map((story) => (
-              <div key={story._id} className="story-card" style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '10px' }}>
+              <div key={story.slug || story._id} className="story-card" style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '10px' }}>
                 {story.fileUrl && (
                   <img 
                     src={`/uploads/${story.fileUrl}`} 

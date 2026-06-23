@@ -15,7 +15,7 @@ async function getBlog(slug) {
   }
 }
 
-
+//slug
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = await getBlog(slug);

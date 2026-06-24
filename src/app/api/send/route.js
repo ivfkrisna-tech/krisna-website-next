@@ -1,12 +1,15 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req) {
   try {
+    // 1. Safe Initialization: Isko function ke andar rakha hai aur build time crash se bachane ke liye fallback diya hai
+    const apiKey = process.env.RESEND_API_KEY || 're_dummyKeyForBuildTime';
+    const resend = new Resend(apiKey);
+
     const body = await req.json();
     const { firstName, lastName, phone, email, enquiryType, message } = body;
 
+    // 2. Email Send Logic
     const data = await resend.emails.send({
       from: 'Website Form <onboarding@resend.dev>', 
       to: 'ivfkrisna@gmail.com', 

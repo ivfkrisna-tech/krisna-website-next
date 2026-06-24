@@ -1,11 +1,25 @@
 import mongoose from 'mongoose';
 
-const DataSchema = new mongoose.Schema({ 
+const DataSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    slug: { type: String, required: true, unique: true, index: true }, // Slug added
     content: { type: String, required: true },
-    fileUrl: { type: String },
-    author: { type: String, default: "" } 
+    slug: { type: String, required: true, unique: true },
+    
+    
+    fileUrl: { type: String, default: '' }, 
+    author: { type: String, default: '' },  
+
+    // SEO (Traditional)
+    targetKeyword: { type: String, default: '' },
+    metaDescription: { type: String, default: '' },
+
+    // AEO (Answer Engine Opt.)
+    directAnswer: { type: String, default: '' }, 
+    targetQuestion: { type: String, default: '' },
+
+    
+    coreEntities: { type: String, default: '' }, 
+    citations: { type: String, default: '' }
 }, { timestamps: true });
 
 // Check if models exist, otherwise create them

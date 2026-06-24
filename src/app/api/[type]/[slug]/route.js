@@ -4,31 +4,23 @@ import { Blog, FAQ, Story } from '@/models/Data';
 import mongoose from 'mongoose';
 
 const getModel = (type) => {
+    
     const models = { 'blogs': Blog, 'faqs': FAQ, 'success_stories': Story };
     return models[type] || null;
 };
 
-// Helper: Check agar input ID hai ya Slug
-const findByAny = async (Model, identifier) => {
-    if (mongoose.Types.ObjectId.isValid(identifier)) {
-        return await Model.findById(identifier);
-    }
-    return await Model.findOne({ slug: identifier });
-};
-
 export async function GET(req, { params }) {
     try {
-        const { type, slug } = await params;
+        const { type } = await params;
         await connectDB();
-        const Model = getModel(type);
-        if (!Model) return NextResponse.json({ error: 'Invalid' }, { status: 404 });
-
-        const item = await findByAny(Model, slug);
-        if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+        const Model = getModel(type); // getModel function check karein
         
-        return NextResponse.json(item);
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
+        const items = await Model.find({}).sort({ createdAt: -1 }); // Yahan se data fetch ho raha hai
+        return NextResponse.json(items);
     } catch (error) {
-        return NextResponse.json({ error: 'Error' }, { status: 500 });
+        return NextResponse.json({ error: 'Database fetch failed' }, { status: 500 });
     }
 }
 
@@ -39,16 +31,22 @@ export async function PUT(req, { params }) {
         const body = await req.json();
         const Model = getModel(type);
         
+        if (!Model) return NextResponse.json({ error: 'Invalid type' }, { status: 404 });
+
         const query = mongoose.Types.ObjectId.isValid(slug) ? { _id: slug } : { slug: slug };
-        const updatedItem = await Model.findOneAndUpdate(query, body, { new: true });
         
-        return updatedItem ? NextResponse.json(updatedItem) : NextResponse.json({ error: 'Not found' }, { status: 404 });
+        // Saare fields jo dashboard se aa rahe hain unhein update karein
+        const updatedItem = await Model.findOneAndUpdate(query, { $set: body }, { new: true });
+        
+        return updatedItem 
+            ? NextResponse.json(updatedItem) 
+            : NextResponse.json({ error: 'Not found' }, { status: 404 });
     } catch (error) {
+        console.error("PUT Error:", error);
         return NextResponse.json({ error: 'Update failed' }, { status: 500 });
     }
 }
 
-// DELETE aur PUT mein bhi same logic use karein
 export async function DELETE(req, { params }) {
     try {
         const { type, slug } = await params;
@@ -58,8 +56,10 @@ export async function DELETE(req, { params }) {
         const query = mongoose.Types.ObjectId.isValid(slug) ? { _id: slug } : { slug: slug };
         const deletedItem = await Model.findOneAndDelete(query);
         
-        return deletedItem ? NextResponse.json({ message: "Deleted" }) : NextResponse.json({ error: 'Not found' }, { status: 404 });
+        return deletedItem 
+            ? NextResponse.json({ message: "Item deleted successfully" }) 
+            : NextResponse.json({ error: 'Not found' }, { status: 404 });
     } catch (error) {
-        return NextResponse.json({ error: 'Failed' }, { status: 500 });
+        return NextResponse.json({ error: 'Deletion failed' }, { status: 500 });
     }
 }

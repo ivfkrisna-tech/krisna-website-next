@@ -211,3 +211,42 @@ body {
   background-color: #e60000;
   transform: scale(1.05); /* Hover par thoda sa bada hoga */
 }
+/* --- Two Column Form Layout --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Sidebar for SEO cards */
+.seo-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.seo-sidebar .card {
+  margin: 0;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.seo-sidebar h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Form Inputs Styling */
+.admin-form input, .admin-form textarea {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.admin-form input:focus { border-color: #3b82f6; outline: none; }

@@ -69,21 +69,37 @@ function ContentManager({ type, refreshStats }) {
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   const [file, setFile] = useState(null);
-  const [editSlug, setEditSlug] = useState(null); // ID se Slug par move kiya
+  const [editSlug, setEditSlug] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // States for SEO, AEO, and GEO
+  const [targetKeyword, setTargetKeyword] = useState('');
+  const [metaDescription, setMetaDescription] = useState('');
+  const [directAnswer, setDirectAnswer] = useState('');
+  const [targetQuestion, setTargetQuestion] = useState('');
+  const [coreEntities, setCoreEntities] = useState('');
+  const [citations, setCitations] = useState('');
+
+  // 1. Data Load Function
   const loadData = async () => {
     try {
       const res = await fetch(`/api/${type}`);
       if (res.ok) {
         const data = await res.json();
+        console.log(`Fetched Data for ${type}:`, data);
         setItems(Array.isArray(data) ? data : []);
       }
-    } catch (err) { console.error("Load Data Error:", err); }
+    } catch (err) { 
+      console.error("Load Data Error:", err); 
+    }
   };
 
-  useEffect(() => { loadData(); }, [type]);
+  // 2. Trigger data load when tab changes
+  useEffect(() => { 
+    loadData(); 
+  }, [type]);
 
+  // 3. Submit Post/Update
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -97,13 +113,18 @@ function ContentManager({ type, refreshStats }) {
         finalFileUrl = data.filename;
       }
 
-      const generatedSlug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-            const payload = {
+      const payload = {
         title,
-        slug: editSlug || generatedSlug, // Agar edit ho raha hai, toh wahi slug rahega
+        slug: editSlug || title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''),
         content,
-  ...(type === 'success_stories' && { author })
-};
+        targetKeyword,
+        metaDescription,
+        directAnswer,
+        targetQuestion,
+        coreEntities,
+        citations,
+        ...(type === 'success_stories' && { author })
+      };
 
       if (finalFileUrl) payload.fileUrl = finalFileUrl;
 
@@ -115,48 +136,119 @@ function ContentManager({ type, refreshStats }) {
 
       if (res.ok) {
         alert("Operation Successful!");
+        // Reset all states
         setEditSlug(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
+        setTargetKeyword(''); setMetaDescription(''); setDirectAnswer(''); 
+        setTargetQuestion(''); setCoreEntities(''); setCitations('');
         loadData();
         if (refreshStats) refreshStats();
       }
-    } catch (err) { alert("Failed to save data"); }
-    finally { setLoading(false); }
+    } catch (err) { 
+      alert("Failed to save data"); 
+    } finally { 
+      setLoading(false); 
+    }
   };
 
-  const handleDelete = async (slug) => {
+  // 4. Delete Function
+  const handleDelete = async (slugOrId) => {
     if (!window.confirm("DO YOU WANT TO DELETE THIS ITEM?")) return;
     try {
-      const res = await fetch(`/api/${type}/${slug}`, { method: 'DELETE' });
+      const res = await fetch(`/api/${type}/${slugOrId}`, { method: 'DELETE' });
       if (res.ok) {
         alert("Item deleted successfully!");
         loadData();
         if (refreshStats) refreshStats();
       }
-    } catch (err) { console.error("Delete Error:", err); }
+    } catch (err) { 
+      console.error("Delete Error:", err); 
+    }
   };
 
   return (
     <div className="data-section">
-      <h3>Manage {type.replace('_', ' ').toUpperCase()}</h3>
-      <form onSubmit={handleSubmit} className="admin-form">
-        <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder={type === 'faqs' ? "Enter Question" : "Enter Title"} required />
-        {type === 'success_stories' && <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Name (e.g. Anjali & Rajesh Verma)" />}
-        <Editor value={content} onChange={setContent} />
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit" disabled={loading}>{loading ? 'Processing...' : (editSlug ? 'Update' : 'Publish')}</button>
+      <h3 style={{ marginBottom: '20px' }}>Manage {type.replace('_', ' ').toUpperCase()}</h3>
+      
+      <form onSubmit={handleSubmit} className="form-grid">
+        <div className="admin-form">
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" required />
+          {type === 'success_stories' && <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author Name" />}
+          <Editor value={content} onChange={setContent} />
+          <input type="file" onChange={(e) => setFile(e.target.files[0])} style={{ marginTop: '10px' }} />
+          <button type="submit" disabled={loading} style={{ marginTop: '20px', width: '100%', padding: '12px', background: '#3b82f6', color: 'white', borderRadius: '8px', border: 'none', cursor: 'pointer' }}>
+            {loading ? 'Processing...' : (editSlug ? 'Update Post' : 'Publish Post')}
+          </button>
+        </div>
+
+        <div className="seo-sidebar">
+          <div className="card">
+            <h4>SEO Settings</h4>
+            <input value={targetKeyword} onChange={(e) => setTargetKeyword(e.target.value)} placeholder="Target Keyword" />
+            <textarea value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} placeholder="Meta Description" />
+          </div>
+          <div className="card">
+            <h4>Answer Engine (AEO)</h4>
+            <textarea value={directAnswer} onChange={(e) => setDirectAnswer(e.target.value)} placeholder="Concise snippet (40-50 words)..." />
+            <input value={targetQuestion} onChange={(e) => setTargetQuestion(e.target.value)} placeholder="Target Question" />
+          </div>
+          <div className="card">
+            <h4>Generative Engine (GEO)</h4>
+            <input value={coreEntities} onChange={(e) => setCoreEntities(e.target.value)} placeholder="Entities (Comma separated)" />
+            <textarea value={citations} onChange={(e) => setCitations(e.target.value)} placeholder="Sources / Citations" />
+          </div>
+        </div>
       </form>
 
       <div className="items-list">
-        {items.map((item) => (
-          <div key={item.slug || item._id} className="card" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px', borderBottom: '1px solid #ddd' }}>
-            {item.fileUrl && <img src={`/uploads/${item.fileUrl}`} alt="preview" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '5px' }} />}
-            <span style={{ flexGrow: 1 }}>{item.title}</span>
-            <div className="admin-actions">
-              <button className="btn-edit" onClick={() => { setEditSlug(item.slug || item._id); setTitle(item.title); setContent(item.content); if(item.author) setAuthor(item.author); window.scrollTo(0, 0); }}>Edit</button>
-              <button className="btn-delete" onClick={() => handleDelete(item.slug || item._id)}>Delete</button>
+        {items && items.length > 0 ? (
+          items.map((item) => (
+            <div key={item._id || item.slug} className="card" style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '15px', marginBottom: '10px' }}>
+              {item.fileUrl && (
+                <img 
+                  src={item.fileUrl.startsWith('http') ? item.fileUrl : `/uploads/${item.fileUrl}`} 
+                  alt={item.title} 
+                  style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '8px' }} 
+                />
+              )}
+              
+              <span style={{ flexGrow: 1, fontWeight: '600' }}>{item.title}</span>
+              
+              <div className="admin-actions" style={{ display: 'flex', gap: '10px' }}>
+                <button 
+                  className="btn-edit" 
+                  style={{ padding: '8px 16px', background: '#20b2aa', color: 'white', borderRadius: '6px', border: 'none', cursor: 'pointer' }}
+                  onClick={() => {
+                    setEditSlug(item.slug || item._id);
+                    setTitle(item.title || '');
+                    setContent(item.content || '');
+                    setAuthor(item.author || '');
+                    setTargetKeyword(item.targetKeyword || '');
+                    setMetaDescription(item.metaDescription || '');
+                    setDirectAnswer(item.directAnswer || '');
+                    setTargetQuestion(item.targetQuestion || '');
+                    setCoreEntities(item.coreEntities || '');
+                    setCitations(item.citations || '');
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Edit
+                </button>
+                
+                <button 
+                  className="btn-delete" 
+                  style={{ padding: '8px 16px', background: '#ff4d4d', color: 'white', borderRadius: '6px', border: 'none', cursor: 'pointer' }}
+                  onClick={() => handleDelete(item.slug || item._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
+          ))
+        ) : (
+          <div style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>
+            <p>No items found. </p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

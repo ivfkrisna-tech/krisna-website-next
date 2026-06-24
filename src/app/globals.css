@@ -1,4 +1,6 @@
-/* 1. CSS Variables (Design System) */
+/* ==========================================================================
+   1. CSS Variables (Design System)
+   ========================================================================== */
 :root {
   --brand-teal: #008080;
   --brand-teal-dark: #004d4d;
@@ -9,7 +11,9 @@
   --section-padding: 80px 5%;
 }
 
-/* 2. Global Resets */
+/* ==========================================================================
+   2. Global Resets & Elements
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,9 +24,9 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-color);
   line-height: 1.6;
+  background-color: #f8fafc; /* Subtle background for better card contrast */
 }
 
-/* 3. Global Elements */
 a {
   text-decoration: none;
   color: inherit;
@@ -33,7 +37,15 @@ img {
   height: auto;
 }
 
-/* 4. Common Utility Classes */
+i {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   3. Common Utility Classes
+   ========================================================================== */
 .section {
   padding: var(--section-padding);
 }
@@ -42,6 +54,10 @@ img {
   text-align: center;
   margin-bottom: 50px;
   font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-title { font-size: 1.8rem; }
 }
 
 .btn-primary {
@@ -58,7 +74,7 @@ img {
   background-color: var(--brand-teal-dark);
 }
 
-/* 5. Reveal Animation (Jo aapke useReveal hook mein use ho raha hai) */
+/* Reveal Animation (Cleaned up temporary override) */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -69,51 +85,108 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
-@media (max-width: 768px) {
-  .section-title { font-size: 1.8rem; }
+
+/* ==========================================================================
+   4. Blog Page Grid Layout
+   ========================================================================== */
+/* Outer Wrapper Section */
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
-.reveal {
-  opacity: 1 !important; /* Temporarily reveal sab kuch */
+
+/* Actual Grid Controller */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 30px;
+  align-items: stretch; /* Hamesha ek row ke saare cards ki height barabar rakhega */
 }
-i {
-  display: inline-block;
-  min-width: 20px;
-  text-align: center;
-}
+
+/* ==========================================================================
+   5. Optimized Blog Card Layout
+   ========================================================================== */
 .blog-card {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: white;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; /* Crucial: Taaki image ke rounded corners perfect dikhein */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   
-  /* Text handling ke liye best practice */
+  /* Text handling safeguards */
   overflow-wrap: break-word; 
   word-wrap: break-word;
   hyphens: auto; 
-  
-  height: auto; 
-  min-height: 350px; 
-}
-.blog-card img {
-  width: 100%;
-  height: 200px; /* Fixed height dein taaki saare card same dikhein */
-  object-fit: cover; /* Image stretch nahi hogi, smartly crop hogi */
-  border-radius: 5px;
-}
-.blog-card p {
-  flex-grow: 1; /* Ye content area ko expand karega */
-  margin-bottom: 15px;
 }
 
-.read-more-btn {
-  margin-top: auto; /* Ye button ko force karega niche rehne ke liye */
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
-.blog-container {
-  display: grid;
-  /* Screen ke hisaab se apne aap columns banayega */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-  gap: 20px;
+
+/* Image Cropping Layer */
+.blog-card-image-wrapper {
+  width: 100%;
+  height: 210px; /* Fixed height standard */
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.blog-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Image bina stretch hue perfectly scale hogi */
+}
+
+/* Text Container (Padding inside here instead of parent card) */
+.blog-card-body {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Space optimization */
+}
+
+.blog-card-body h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  
+  /* Title limits to max 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card-body p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  
+  /* Description limits to max 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Read More Button Locked at Bottom */
+.read-more-link {
+  margin-top: auto; /* Magic line: Pushes button to the exact bottom line */
+  color: #008b8b;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.read-more-link:hover {
+  color: var(--brand-teal-dark);
 }

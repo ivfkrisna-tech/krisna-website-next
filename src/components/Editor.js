@@ -1,11 +1,11 @@
 import ReactQuill from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css'; // Styles import karna zaroori hai
+import 'react-quill-new/dist/quill.snow.css'; // Sirf ek hi style import karein
 
 const Editor = ({ value, onChange }) => {
   const modules = {
     toolbar: [
       [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'link'], // Ye rahe options
+      ['bold', 'italic', 'underline', 'link'],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
       ['clean']
     ],

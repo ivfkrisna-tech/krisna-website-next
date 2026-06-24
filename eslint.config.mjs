@@ -1,11 +1,17 @@
 import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals.js";
+import { FlatCompat } from "@eslint/eslintrc";
+
+// 1. Compatibility layer taiyar karein taaki Next.js config array format mein badal sake
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
 
 const eslintConfig = defineConfig([
-  ...nextVitals,
-  // Override default ignores of eslint-config-next.
+  // 2. ✅ core-web-vitals ko compat layer ke sath failayein (Ab yeh sahi se iterate hoga)
+  ...compat.extends("next/core-web-vitals"),
+
+  // 3. Aapke custom ignores
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",

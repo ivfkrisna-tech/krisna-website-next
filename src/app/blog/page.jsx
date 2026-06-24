@@ -1,12 +1,14 @@
 import BlogCard from '@/components/BlogCard';
+import connectDB from '@/lib/mongodb';
+import { Blog } from '@/models/Data';
+
+// 🔥 MAGIC LINE: Isse Next.js har request par database se naya data fetch karega (Static cache issue fix)
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Fertility Insights & IVF Blogs | Krishna IVF Jaipur',
   description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krishna IVF Group, Jaipur.',
 };
-
-import connectDB from '@/lib/mongodb';
-import { Blog } from '@/models/Data';
 
 // 1. Data fetch karne ke liye async function
 async function getBlogs() {
@@ -23,7 +25,6 @@ async function getBlogs() {
 }
 
 export default async function BlogPage() {
- 
   const blogs = await getBlogs();
 
   const collectionSchema = {

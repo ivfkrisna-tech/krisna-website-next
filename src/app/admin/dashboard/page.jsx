@@ -10,18 +10,9 @@ const Editor = dynamic(() => import('@/components/Editor'), { ssr: false });
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [stats, setStats] = useState({ blogs: [], faqs: [], stories: [] });
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      router.push('/admin/login');
-    } else {
-      setIsAuthorized(true);
-    }
-  }, [router]);
-
+  // 1. Ab direct stats fetch karenge, kyunki authentication Middleware handle kar raha hai
   const fetchStats = async () => {
     try {
       const res = await fetch('/api/all-data');
@@ -32,9 +23,21 @@ export default function Dashboard() {
     } catch (err) { console.error("Stats Error:", err); }
   };
 
-  useEffect(() => { if (isAuthorized) fetchStats(); }, [isAuthorized]);
+  useEffect(() => { 
+    fetchStats(); 
+  }, []);
 
-  if (!isAuthorized) return <div className="loading">Authenticating...</div>;
+  // 2. Cookie ko clear karne ke liye Logout handler
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/admin/logout', { method: 'POST' });
+      if (res.ok) {
+        router.push('/admin/login');
+      }
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
 
   return (
     <div className="dashboard-container">
@@ -45,7 +48,8 @@ export default function Dashboard() {
           <p onClick={() => setActiveTab('blogs')} className={activeTab === 'blogs' ? 'active' : ''}>📝 Manage Blogs</p>
           <p onClick={() => setActiveTab('faqs')} className={activeTab === 'faqs' ? 'active' : ''}>❓ Manage FAQs</p>
           <p onClick={() => setActiveTab('stories')} className={activeTab === 'stories' ? 'active' : ''}>❤️ Success Stories</p>
-          <button onClick={() => { localStorage.removeItem('adminToken'); router.push('/admin/login'); }} className="logout-btn">Logout</button>
+          {/* Logout Button updated */}
+          <button onClick={handleLogout} className="logout-btn">Logout</button>
         </nav>
       </aside>
       <main className="main-content">
@@ -80,7 +84,6 @@ function ContentManager({ type, refreshStats }) {
   const [coreEntities, setCoreEntities] = useState('');
   const [citations, setCitations] = useState('');
 
-  // 1. Data Load Function
   const loadData = async () => {
     try {
       const res = await fetch(`/api/${type}`);
@@ -94,14 +97,13 @@ function ContentManager({ type, refreshStats }) {
     }
   };
 
-  // 2. Trigger data load when tab changes
   useEffect(() => { 
     loadData(); 
   }, [type]);
 
-  // 3. Submit Post/Update
   const handleSubmit = async (e) => {
     e.preventDefault();
+    loading.true;
     setLoading(true);
     try {
       let finalFileUrl = "";
@@ -136,7 +138,6 @@ function ContentManager({ type, refreshStats }) {
 
       if (res.ok) {
         alert("Operation Successful!");
-        // Reset all states
         setEditSlug(null); setTitle(''); setContent(''); setAuthor(''); setFile(null);
         setTargetKeyword(''); setMetaDescription(''); setDirectAnswer(''); 
         setTargetQuestion(''); setCoreEntities(''); setCitations('');
@@ -150,7 +151,6 @@ function ContentManager({ type, refreshStats }) {
     }
   };
 
-  // 4. Delete Function
   const handleDelete = async (slugOrId) => {
     if (!window.confirm("DO YOU WANT TO DELETE THIS ITEM?")) return;
     try {
@@ -246,7 +246,7 @@ function ContentManager({ type, refreshStats }) {
           ))
         ) : (
           <div style={{ textAlign: 'center', padding: '20px', color: '#64748b' }}>
-            <p>No items found. </p>
+            <p>No items found.</p>
           </div>
         )}
       </div>

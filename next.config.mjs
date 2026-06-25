@@ -2,6 +2,8 @@
 const nextConfig = {
   typescript: { ignoreBuildErrors: true },
 
+  allowedDevOrigins: ['192.168.183.171'],
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'cdn.pixabay.com', pathname: '/**' },

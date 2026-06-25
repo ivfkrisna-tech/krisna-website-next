@@ -13,34 +13,34 @@ export default function LoginPage() {
   
   const router = useRouter(); 
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
 
-    try {
-      const res = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (res.ok && data.success) {
-        // Token save karein
-        localStorage.setItem('adminToken', data.token);
-        // Dashboard par redirect karein
-        router.push('/admin/dashboard'); 
-      } else {
-        setError(data.message || 'Invalid Credentials!');
-      }
-    } catch (err) {
-      setError('Server connection failed!');
-    } finally {
-      setLoading(false);
+    if (res.ok && data.success) {
+      // 🔥 LocalStorage waali line hata di hai, cookie browser mein auto-save ho chuki hai
+      
+      // Seedha dashboard par redirect karein
+      router.push('/admin/dashboard'); 
+    } else {
+      setError(data.message || 'Invalid Credentials!');
     }
-  };
+  } catch (err) {
+    setError('Server connection failed!');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f9fafb' }}>

@@ -250,3 +250,20 @@ body {
 }
 
 .admin-form input:focus { border-color: #3b82f6; outline: none; }
+
+.admin-form input, 
+.admin-form textarea,
+.seo-sidebar input, 
+.seo-sidebar textarea,
+.items-list span {
+  word-break: break-all;
+}
+.form-grid, .admin-form {
+  min-width: 0 !important;
+}
+
+/* 2. 🔥 Editor ke andar ke har ek element (div, p, span) ke text ko todne ke liye */
+.admin-form * {
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+}

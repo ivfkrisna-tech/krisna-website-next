@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import path from 'path';
+import { put } from '@vercel/blob'; // 🔥 fs ki jagah ab yeh use hoga
 
 export async function POST(req) {
   try {
@@ -11,16 +10,15 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'File nahi mili' }, { status: 400 });
     }
 
-    
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = Date.now() + "_" + file.name.replaceAll(" ", "_");
+    // 1. 🔥 Seedhe Vercel Blob Cloud par upload karein
+    const blob = await put(file.name, file, {
+      access: 'public',
+    });
 
-    
-    const uploadDir = path.join(process.cwd(), 'public/uploads');
-    await writeFile(path.join(uploadDir, filename), buffer);
+    // 2. Response mein ab local filename ki jagah live image URL (`blob.url`) bhejenge
+    // Isse aapke database mein image ka live link save ho jayega jo har jagah dikhega
+    return NextResponse.json({ success: true, filename: blob.url });
 
-   
-    return NextResponse.json({ success: true, filename: filename });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json({ success: false, message: 'Upload failed' }, { status: 500 });

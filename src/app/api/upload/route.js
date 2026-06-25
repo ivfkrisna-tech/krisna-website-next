@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { put } from '@vercel/blob'; // 🔥 Local file ki jagah seedhe Cloud storage use karein
+import { put } from '@vercel/blob'; // 🔥 local fs ki jagah ab yeh cloud use hoga
 
 export async function POST(req) {
   try {
@@ -10,13 +10,12 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'File nahi mili' }, { status: 400 });
     }
 
-    // 1. 🔥 Yeh file ko seedhe cloud par bhej dega (Vercel par 500 error aana band)
+    // 🔥 File ko seedhe Vercel Blob cloud par bhejenge (Vercel par 500 error aana band)
     const blob = await put(file.name, file, {
       access: 'public',
     });
 
-    // 2. Response mein hum local name ki jagah live URL (blob.url) bhej rahe hain
-    // Aapka frontend automatic is URL ko 'finalFileUrl' banakar database mein bhej dega!
+    // Response mein vahi 'filename' key bhejenge jo aapka frontend mangta hai, bas ab usme live URL hoga
     return NextResponse.json({ success: true, filename: blob.url });
 
   } catch (error) {

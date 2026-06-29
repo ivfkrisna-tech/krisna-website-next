@@ -150,9 +150,13 @@ export default function ContactPage() {
               </div>
               <iframe
                 className="map-frame"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.866597255167!2d75.8078652!3d26.8453472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db70000000001%3A0x0!2sKrishna%20IVF%20Group!5e0!3m2!1sen!2sin!4v1680000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113906.32422626167!2d75.66504540155958!3d26.853542074977476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db70f595bc337%3A0x7f3f2bf56bc36002!2sHouse%20Of%20Doctor&#39;s!5e0!3m2!1sen!2sin!4v1782708056502!5m2!1sen!2sin"
+                width="400"
+                height="300"
+                style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Google Map Location of Krisna IVF Center"
               ></iframe>
             </div>

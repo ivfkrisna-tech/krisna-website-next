@@ -10,25 +10,20 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'File nahi mili' }, { status: 400 });
     }
 
-   
-    console.log("File received:", file.name, file.size);
-
-    
-    const fileName = `${Date.now()}-${file.name}`;
-
-    const blob = await put(fileName, file, {
+    // Blob upload
+    const blob = await put(file.name, file, {
       access: 'public',
+      
     });
 
     return NextResponse.json({ success: true, filename: blob.url });
 
   } catch (error) {
     
-    console.error("Detailed Upload Error:", error);
-    
+    console.error("Upload error details:", error);
     return NextResponse.json({ 
         success: false, 
-        message: 'Upload failed: ' + error.message 
+        message: error.message || 'Unknown error' 
     }, { status: 500 });
   }
 }

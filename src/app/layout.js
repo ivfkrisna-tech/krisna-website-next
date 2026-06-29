@@ -1,4 +1,4 @@
-// Dono ek hi folder (src/app/) mein hain, isliye ./ use karein
+
 import "./styles/global.css";
 import "./styles/icsi.css";
 import "./styles/ivf.css";

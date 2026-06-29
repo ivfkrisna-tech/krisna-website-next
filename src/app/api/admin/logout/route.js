@@ -9,7 +9,7 @@ export async function POST() {
     // Cookie ko delete karne ke liye expires setting ko purani date par set kar dein
     response.cookies.set('admin_token', '', {
       httpOnly: true,
-      expires: new Date(0), // Yeh cookie ko turant expire kar dega
+      expires: new Date(0), 
       path: '/',
     });
 

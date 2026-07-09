@@ -26,10 +26,39 @@ import Footer from "@/components/Footer";
 import FloatButtons from "@/components/FloatButtons";
 
 export const metadata = {
-  title: "Krishna IVF Group | Advanced Fertility Care in Jaipur",
-  description: "Compassionate and advanced fertility solutions including IVF, IUI, and ICSI by our expert team in Jaipur.",
+  metadataBase: new URL('https://www.krisnaivfgroup5.com'),
+  title: {
+    default: "Krishna IVF Group | Advanced Fertility Care in Jaipur",
+    template: "%s | Krishna IVF Group"
+  },
+  description: "Compassionate and advanced fertility solutions including IVF, IUI, and ICSI by our expert team of specialists in Jaipur, Rajasthan.",
+  alternates: {
+    canonical: '/',
+  },
   verification: {
     google: "xCb2GxwneoFunV5V_N1GAbOE06rPgqG5ommrlsAmMHc",
+  },
+  openGraph: {
+    title: 'Krishna IVF Group | Best IVF Center in Jaipur',
+    description: 'Advanced fertility solutions including IVF, IUI, and ICSI. Book your consultation today.',
+    url: 'https://www.krisnaivfgroup5.com',
+    siteName: 'Krishna IVF Group',
+    images: [
+      {
+        url: '/img/Krisna_Logo-removebg-preview.png', 
+        width: 1200,
+        height: 630,
+        alt: 'Krishna IVF Group Jaipur',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Krishna IVF Group | Advanced Fertility Care',
+    description: 'Compassionate fertility solutions including IVF, IUI, and ICSI in Jaipur.',
+    images: ['/img/Krisna_Logo-removebg-preview.png'],
   },
 };
 

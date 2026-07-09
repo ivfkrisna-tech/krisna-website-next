@@ -122,25 +122,25 @@ useEffect(() => {
             <div className="service-card">
               <i className="fa-solid fa-dna service-icon"></i>
               <h3>IVF Treatment</h3>
-              <p>Advanced In-Vitro Fertilization using state-of-the-art lab technology.</p>
+              <p>In Vitro Fertilization (IVF) is an advanced reproductive technology where an egg is fertilized by sperm in a state-of-the-art laboratory incubator to overcome severe infertility factors.</p>
               <Link href="/ivf" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
               <i className="fa-solid fa-syringe service-icon"></i>
               <h3>IUI Procedure</h3>
-              <p>A less invasive first step for many couples, optimizing timing.</p>
+              <p>Intrauterine Insemination (IUI) is a fertility treatment that involves placing sperm directly inside a woman's uterus to facilitate fertilization during ovulation.</p>
               <Link href="/iui" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
-              <i className="fa-solid fa-hand-holding-heart service-icon"></i>
-              <h3>Donor Program</h3>
-              <p>Ethical and strictly screened donor egg/sperm programs.</p>
-              <Link href="/donor" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
+              <i className="fa-solid fa-microscope service-icon"></i>
+              <h3>ICSI Procedure</h3>
+              <p>Intracytoplasmic Sperm Injection (ICSI) is a specialized IVF technique where a single healthy sperm is micro-injected into a mature egg to treat male factor infertility.</p>
+              <Link href="/icsi" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
               <i className="fa-solid fa-user-md service-icon"></i>
               <h3>Fertility Surgery</h3>
-              <p>Minimally invasive laparoscopy to correct issues.</p>
+              <p>Minimally invasive reproductive surgeries, including laparoscopy, are performed to correct anatomical issues and significantly improve natural conception chances.</p>
               <Link href="/fertility_surgery" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
           </div>
@@ -217,6 +217,68 @@ useEffect(() => {
               <i className="fa-solid fa-quote-right quote-icon"></i>
               <p className="review-text">"Thank you for completing our family. The facilities are world-class."</p>
               <div className="reviewer">- Meena K.</div>
+            </div>
+          </div>
+        </section>
+
+        {/* E-E-A-T Doctor Profiles */}
+        <section className="section reveal" style={{ padding: 'var(--section-padding)' }}>
+          <h2 className="section-title">Meet Our Fertility Specialists</h2>
+          <div className="experts-grid">
+            <article className="doctor-profile-card glass-card">
+              <img src="/img/homepage4_img.png" alt="Dr. Krishna Profile" className="doctor-img" loading="lazy" />
+              <div className="doctor-info">
+                <h3 itemProp="name">Dr. Krishna</h3>
+                <p className="credentials" itemProp="jobTitle">MBBS, MS (OBG), Fellowship in Reproductive Medicine</p>
+                <p className="specialty">Senior IVF & Fertility Specialist</p>
+                <p className="bio">With extensive experience in assisted reproductive technologies, Dr. Krishna specializes in managing complex infertility cases and advanced ICSI procedures with a compassionate approach.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* Semantic Local SEO Section */}
+        <section className="section reveal" style={{ padding: 'var(--section-padding)', background: '#fdfbf9' }}>
+          <h2 className="section-title">Serving Jaipur & Rajasthan</h2>
+          <div className="local-seo-container">
+            <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.1rem', color: '#555' }}>
+              Krishna IVF Group is a premier destination in Jaipur, offering world-class, scientifically backed fertility treatments to patients across the region.
+            </p>
+            <div className="local-grid">
+              <div className="local-card glass-card">
+                <h3>Key Service Areas</h3>
+                <ul className="semantic-list">
+                  <li><strong>Mansarovar, Jaipur</strong> - Comprehensive fertility assessments and personalized IVF consultations.</li>
+                  <li><strong>Vaishali Nagar, Jaipur</strong> - Advanced IUI treatments and reproductive health screenings.</li>
+                  <li><strong>Malviya Nagar, Jaipur</strong> - High-tech ICSI procedures and stringent clean-room certified labs.</li>
+                  <li><strong>Outside Rajasthan</strong> - Dedicated virtual support and care coordination for out-of-state patients.</li>
+                </ul>
+              </div>
+              <div className="local-card glass-card">
+                <h3>Available Fertility Procedures</h3>
+                <table className="semantic-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Treatment Name</th>
+                      <th scope="col">Clinical Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>IVF</strong></td>
+                      <td>Laboratory-assisted fertilization for complex infertility factors.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>IUI</strong></td>
+                      <td>Direct sperm placement to optimize and enhance conception chances.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ICSI</strong></td>
+                      <td>Targeted micro-injection for overcoming severe male factor infertility.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>

@@ -226,12 +226,12 @@ useEffect(() => {
           <h2 className="section-title">Meet Our Fertility Specialists</h2>
           <div className="experts-grid">
             <article className="doctor-profile-card glass-card">
-              <img src="/img/homepage4_img.png" alt="Dr. Krishna Profile" className="doctor-img" loading="lazy" />
+              <img src="/img/homepage4_img.png" alt="Dr. Ssuniti Profile" className="doctor-img" loading="lazy" />
               <div className="doctor-info">
-                <h3 itemProp="name">Dr. Krishna</h3>
-                <p className="credentials" itemProp="jobTitle">MBBS, MS (OBG), Fellowship in Reproductive Medicine</p>
-                <p className="specialty">Senior IVF & Fertility Specialist</p>
-                <p className="bio">With extensive experience in assisted reproductive technologies, Dr. Krishna specializes in managing complex infertility cases and advanced ICSI procedures with a compassionate approach.</p>
+                <h3 itemProp="name">Dr. Ssuniti</h3>
+                <p className="credentials" itemProp="jobTitle">Consultant Clinical Embryologist & Artificial Reproductive Technology</p>
+                <p className="specialty">EMBRYOLOGIST</p>
+                <p className="bio">As an expert Embryologist, Dr. Ssuniti brings exceptional precision to our laboratory, specializing in advanced Artificial Reproductive Technology to ensure the highest success rates for our patients.</p>
               </div>
             </article>
           </div>

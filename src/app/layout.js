@@ -37,28 +37,23 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* FontAwesome yahan add karein taaki icons wapas aa jayein */}
-        <link 
-          rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-        />
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-TEN880Y6XN"
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEN880Y6XN"></script>
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-TEN880Y6XN', {
-                page_path: window.location.pathname,
-              });
+
+              gtag('config', 'G-TEN880Y6XN');
             `,
           }}
+        />
+        {/* FontAwesome yahan add karein taaki icons wapas aa jayein */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
         />
       </head>
       <body>

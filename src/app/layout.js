@@ -17,6 +17,7 @@ import "./styles/fertility_surgery.css";
 import "./styles/index.css";
 import "./styles/success.css";
 // Imports ko organize karein
+import Script from "next/script";
 
 
 // Components (Path sahi check kar lein - agar components folder src ke bahar hai toh ../)
@@ -40,6 +41,24 @@ export default function RootLayout({ children }) {
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+        />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-TEN880Y6XN"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TEN880Y6XN', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
         />
       </head>
       <body>

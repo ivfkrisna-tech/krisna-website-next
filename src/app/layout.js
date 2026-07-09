@@ -27,6 +27,9 @@ import FloatButtons from "@/components/FloatButtons";
 export const metadata = {
   title: "Krishna IVF Group | Advanced Fertility Care in Jaipur",
   description: "Compassionate and advanced fertility solutions including IVF, IUI, and ICSI by our expert team in Jaipur.",
+  verification: {
+    google: "xCb2GxwneoFunV5V_N1GAbOE06rPgqG5ommrlsAmMHc",
+  },
 };
 
 export default function RootLayout({ children }) {

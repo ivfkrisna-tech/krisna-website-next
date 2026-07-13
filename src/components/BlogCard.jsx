@@ -2,14 +2,19 @@
 import Link from 'next/link';
 
 export default function BlogCard({ blog }) {
-  const cleanContent = blog.content ? blog.content.replace(/<[^>]*>?/gm, '') : "";
+  const cleanContent = blog.content ? blog.content.replace(/<[^>]*>?/gm, '') : (blog.metaDescription || "Click to read this article about " + blog.title);
 
-  // Image URL safe check
-  const imageUrl = blog.fileUrl?.startsWith('http') 
-    ? blog.fileUrl 
-    : blog.fileUrl?.includes('uploads') 
-      ? `/${blog.fileUrl.replace(/^\/+/, '')}` 
-      : `/uploads/${blog.fileUrl}`;
+  // Image URL safe check (handling both database fileUrl and local data image)
+  const sourceImage = blog.fileUrl || blog.image;
+  const imageUrl = sourceImage?.startsWith('http') 
+    ? sourceImage 
+    : sourceImage?.includes('uploads') 
+      ? `/${sourceImage.replace(/^\/+/, '')}` 
+      : sourceImage?.startsWith('/') 
+        ? sourceImage
+        : sourceImage ? `/uploads/${sourceImage}` : '/img/fallback-image.jpg';
+
+  const linkHref = `/blog/${blog.slug || blog._id}`;
 
   return (
     <>
@@ -25,6 +30,8 @@ export default function BlogCard({ blog }) {
           height: 100% !important;
           transition: transform 0.2s ease !important;
           border: 1px solid #e2e8f0 !important;
+          text-decoration: none !important;
+          color: inherit !important;
         }
         .blog-card:hover {
           transform: translateY(-5px) !important;
@@ -77,10 +84,10 @@ export default function BlogCard({ blog }) {
       `}} />
 
       {/* 2. COMPONENT HTML */}
-      <div className="blog-card">
+      <Link href={linkHref} className="blog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="blog-card-image-wrapper">
           <img 
-            src={blog.fileUrl ? imageUrl : '/img/fallback-image.jpg'} 
+            src={imageUrl} 
             alt={blog.title} 
             onError={(e) => {
               e.target.onerror = null; 
@@ -100,11 +107,11 @@ export default function BlogCard({ blog }) {
             }...
           </p>
           
-          <Link href={`/blog/${blog.slug || blog._id}`} className="read-more-link">
+          <div className="read-more-link">
             READ MORE <i className="fa-solid fa-angles-right" style={{ marginLeft: '5px' }}></i>
-          </Link>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

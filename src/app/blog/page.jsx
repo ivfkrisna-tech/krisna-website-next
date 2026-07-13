@@ -14,16 +14,26 @@ import { blogs as localBlogs } from '@/data/blogs';
 
 // 1. Data fetch karne ke liye async function
 async function getBlogs() {
+  let dbBlogsParsed = [];
   try {
     await connectDB();
     const blogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
     if (blogs && blogs.length > 0) {
-      return JSON.parse(JSON.stringify(blogs));
+      dbBlogsParsed = JSON.parse(JSON.stringify(blogs));
     }
   } catch (error) {
     console.error("Database fetch failed, falling back to local data:", error);
   }
-  return localBlogs; // Fallback
+  
+  // Merge DB blogs with local blogs, avoiding duplicates by slug
+  const allBlogs = [...dbBlogsParsed];
+  for (const localBlog of localBlogs) {
+    if (!allBlogs.some(dbBlog => dbBlog.slug === localBlog.slug)) {
+      allBlogs.push(localBlog);
+    }
+  }
+  
+  return allBlogs;
 }
 
 export default async function BlogPage() {

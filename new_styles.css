@@ -1,0 +1,54 @@
+
+
+    /* ============================================================
+       13. E-E-A-T & LOCAL SEO UI (ADDED FOR CONTENT STRATEGY)
+       ============================================================ */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      border-radius: 20px;
+    }
+    
+    .experts-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto;
+    }
+    
+    .doctor-profile-card {
+      display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 30px; transition: var(--transition);
+    }
+    
+    .doctor-profile-card:hover {
+      transform: translateY(-5px); box-shadow: var(--shadow-hover);
+    }
+    
+    .doctor-img {
+      width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px;
+    }
+    
+    .doctor-info h3 { margin-bottom: 5px; color: var(--brand-teal-dark); font-size: 1.4rem; }
+    .credentials { font-weight: 700; color: var(--brand-pink); font-size: 0.9rem; margin-bottom: 5px; letter-spacing: 0.5px; }
+    .specialty { font-size: 0.9rem; color: #777; margin-bottom: 15px; font-style: italic; }
+    .bio { font-size: 0.95rem; line-height: 1.6; }
+    
+    .local-seo-container { max-width: 1200px; margin: 0 auto; }
+    .local-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+    .local-card { background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); }
+    .local-card h3 { margin-bottom: 25px; font-size: 1.4rem; border-bottom: 2px solid var(--brand-pink-soft); padding-bottom: 10px; display: inline-block; }
+    
+    .semantic-list { list-style: none; padding: 0; }
+    .semantic-list li { position: relative; padding-left: 25px; margin-bottom: 15px; line-height: 1.6; }
+    .semantic-list li::before { content: '•'; position: absolute; left: 0; color: var(--brand-pink); font-size: 1.5rem; line-height: 1; top: -2px; }
+    
+    .semantic-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .semantic-table th, .semantic-table td { padding: 15px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+    .semantic-table th { font-weight: 600; color: var(--text-heading); background: var(--bg-warm); }
+    .semantic-table tr:last-child td { border-bottom: none; }
+    .semantic-table tr:hover td { background: #fdfdfd; }
+
+    /* Make grid responsive on mobile */
+    @media (max-width: 768px) {
+      .experts-grid, .local-grid { grid-template-columns: 1fr; }
+    }

@@ -1,75 +1,119 @@
-"use client";
-
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import connectDB from '@/lib/mongodb';
+import { FAQ } from '@/models/Data';
+import { localFaqs } from '@/data/faqs';
 
-export default function FAQPage() {
-  const [faqs, setFaqs] = useState([]);
+export const dynamic = 'force-dynamic';
 
-  useEffect(() => {
-    fetch('/api/faqs')
-      .then(res => res.json())
-      .then(data => setFaqs(data))
-      .catch(err => console.error(err));
-  }, []);
+export const metadata = {
+  title: 'Frequently Asked Questions | Krishna IVF Jaipur',
+  description: 'Your fertility journey clarified. Answers to common concerns regarding IVF, costs, treatments, and more.',
+};
 
-  // Category ke hisaab se group karna
+async function getFaqs() {
+  let dbFaqsParsed = [];
+  try {
+    await connectDB();
+    const faqs = await FAQ.find({}).sort({ createdAt: -1 }).lean();
+    if (faqs && faqs.length > 0) {
+      dbFaqsParsed = JSON.parse(JSON.stringify(faqs));
+    }
+  } catch (error) {
+    console.error("Database fetch failed, falling back to local data:", error);
+  }
+  
+  // Merge DB FAQs with local FAQs
+  const allFaqs = [...dbFaqsParsed];
+  
+  // Create a slug for local faqs on the fly if they don't have one
+  const getSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
+  for (const localFaq of localFaqs) {
+    const slug = getSlug(localFaq.title);
+    if (!allFaqs.some(dbFaq => (dbFaq.slug === slug || dbFaq.title === localFaq.title))) {
+      allFaqs.push({ ...localFaq, slug });
+    }
+  }
+  
+  return allFaqs;
+}
+
+export default async function FAQPage() {
+  const faqs = await getFaqs();
   const categories = [...new Set(faqs.map(faq => faq.category || "General & First Steps"))];
 
+  // Schema generation
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.title,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.content.replace(/<[^>]*>?/gm, '') // Strip HTML for schema
+      }
+    }))
+  };
+
   return (
-    <main className="faq-page">
-      {/* Header - Aapki CSS ke .page-header ke sath match karega */}
-      <section className="page-header">
-          <div className="page-header-content reveal active">
-            <h1 style={{ color: '#ffffff' }}>Frequently Asked Questions</h1>
-            <p style={{ color: '#f0f0f0', fontSize: '1.2rem', marginTop: '5px' }}>Your fertility journey clarified. Answers to common concerns.</p>
-            <div className="breadcrumb">
-              <Link href="/">Home</Link> <span style={{ margin: '0 5px', opacity: '0.6' }}>/</span> FAQ
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <main className="faq-page">
+        <section className="page-header">
+            <div className="page-header-content reveal active">
+              <h1 style={{ color: '#ffffff' }}>Frequently Asked Questions</h1>
+              <p style={{ color: '#f0f0f0', fontSize: '1.2rem', marginTop: '5px' }}>Your fertility journey clarified. Answers to common concerns.</p>
+              <div className="breadcrumb">
+                <Link href="/">Home</Link> <span style={{ margin: '0 5px', opacity: '0.6' }}>/</span> FAQ
+              </div>
             </div>
+          </section>
+
+        <section style={{ padding: 'var(--section-padding)' }}>
+          <div className="faq-wrapper">
+            {categories.map((cat, idx) => (
+              <div key={idx} className="faq-category-group">
+                <h2 className="category-title">{cat}</h2>
+                
+                {faqs.filter(f => (f.category || "General & First Steps") === cat).map(faq => (
+                  <details key={faq.slug || faq.title} className="faq-item">
+                    <summary>{faq.title}</summary>
+                    <div className="faq-content" dangerouslySetInnerHTML={{ __html: faq.content }} />
+                  </details>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
 
-      {/* Accordion Sections */}
-      <section style={{ padding: 'var(--section-padding)' }}>
-        <div className="faq-wrapper">
-          {categories.map((cat, idx) => (
-            <div key={idx} className="faq-category-group">
-              <h2 className="category-title">{cat}</h2>
-              
-              {faqs.filter(f => (f.category || "General & First Steps") === cat).map(faq => (
-                <details key={faq.slug || faq._id} className="faq-item">
-                  <summary>{faq.title}</summary>
-                  {/* .faq-content class CSS mein define hai, yahan wrapper use kar rahe hain */}
-                  <div className="faq-content" dangerouslySetInnerHTML={{ __html: faq.content }} />
-                </details>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="faq-cta-section" style={{ 
-        background: 'var(--brand-teal)', 
-        padding: '80px 5%', 
-        textAlign: 'center', 
-        color: '#fff',
-        marginTop: '60px' 
-      }}>
-        <h2 style={{ color: '#fff', marginBottom: '15px' }}>Still have questions?</h2>
-        <p style={{ color: 'rgba(255,255,255,0.9)', marginBottom: '30px', fontSize: '1.1rem' }}>
-          Can't find the answer you're looking for? Please chat with our friendly team.
-        </p>
-        <Link href="/contact" style={{ 
-          background: '#fff', 
-          color: 'var(--brand-teal)', 
-          padding: '15px 40px', 
-          borderRadius: '50px', 
-          textDecoration: 'none', 
-          fontWeight: '600',
-          display: 'inline-block'
+        <section className="faq-cta-section" style={{ 
+          background: 'var(--brand-teal)', 
+          padding: '80px 5%', 
+          textAlign: 'center', 
+          color: '#fff',
+          marginTop: '60px' 
         }}>
-          Contact Us
-        </Link>
-      </section>
-    </main>
+          <h2 style={{ color: '#fff', marginBottom: '15px' }}>Still have questions?</h2>
+          <p style={{ color: 'rgba(255,255,255,0.9)', marginBottom: '30px', fontSize: '1.1rem' }}>
+            Can't find the answer you're looking for? Please chat with our friendly team.
+          </p>
+          <Link href="/contact" style={{ 
+            background: '#fff', 
+            color: 'var(--brand-teal)', 
+            padding: '15px 40px', 
+            borderRadius: '50px', 
+            textDecoration: 'none', 
+            fontWeight: '600',
+            display: 'inline-block'
+          }}>
+            Contact Us
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }

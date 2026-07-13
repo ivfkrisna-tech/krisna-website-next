@@ -2,7 +2,7 @@ export const newSeoBlogs = [
   {
     slug: 'ivf-success-rates-by-age',
     title: 'Understanding IVF Success Rates by Age: What to Expect',
-    image: '/img/1.jpg',
+    image: '/img/blogs/ivf_success_age.png',
     metaDescription: 'Learn about IVF success rates by age, including chances for women over 35 and 40, and what factors influence your fertility journey.',
     metaKeywords: 'IVF success rates by age, IVF after 35, fertility chances, IVF success over 40',
     targetQuestion: 'What is the IVF success rate for women over 35?',
@@ -46,7 +46,7 @@ export const newSeoBlogs = [
   {
     slug: 'iui-vs-ivf-difference',
     title: 'IUI vs. IVF: Which Fertility Treatment is Right for You?',
-    image: '/img/ivf-1.png',
+    image: '/img/blogs/iui_vs_ivf.png',
     metaDescription: 'Discover the key differences between IUI and IVF, their success rates, costs, and how to choose the right fertility treatment for your journey.',
     metaKeywords: 'IUI vs IVF, fertility treatment differences, IUI success rate, IVF vs IUI cost',
     targetQuestion: 'What is the difference between IUI and IVF?',
@@ -91,7 +91,7 @@ export const newSeoBlogs = [
   {
     slug: 'preparing-body-for-ivf-cycle',
     title: 'The Ultimate Guide to Preparing Your Body for an IVF Cycle',
-    image: '/img/vuv.jpg',
+    image: '/img/blogs/ivf_preparation.png',
     metaDescription: 'Learn how to prepare your body for IVF with the best diet, supplements, and lifestyle changes to improve your fertility success.',
     metaKeywords: 'IVF preparation, diet for IVF, lifestyle changes for fertility, IVF supplements',
     targetQuestion: 'How can I prepare my body for IVF?',
@@ -138,7 +138,7 @@ export const newSeoBlogs = [
   {
     slug: 'unexplained-infertility-causes-diagnosis',
     title: 'Unexplained Infertility: Causes, Diagnosis, and Next Steps',
-    image: '/img/aboutus_2img.jpg',
+    image: '/img/blogs/unexplained_infertility.png',
     metaDescription: 'Struggling with unexplained infertility? Learn what it means, hidden causes, and the best fertility treatments to help you conceive.',
     metaKeywords: 'Unexplained infertility, fertility testing, fertility solutions, idiopathic infertility',
     targetQuestion: 'What does unexplained infertility mean and how is it treated?',
@@ -169,7 +169,7 @@ export const newSeoBlogs = [
   {
     slug: 'ivf-cost-in-india-breakdown',
     title: 'How Much Does IVF Cost in India? A Complete Breakdown',
-    image: '/img/ivf-2.png',
+    image: '/img/blogs/ivf_cost.png',
     metaDescription: 'Get a complete breakdown of IVF costs in India, including medications, lab fees, and hidden charges to help you budget for treatment.',
     metaKeywords: 'IVF cost in India, IVF price breakdown, affordable IVF, ICSI cost',
     targetQuestion: 'What is the average cost of IVF in India?',
@@ -210,7 +210,7 @@ export const newSeoBlogs = [
   {
     slug: 'male-infertility-causes-treatments',
     title: 'Male Infertility Causes: Warning Signs and Treatment Options',
-    image: '/img/blood-test-5601437_1280.jpg',
+    image: '/img/blogs/male_infertility.png',
     metaDescription: 'Learn about the most common causes of male infertility, signs to watch for, and advanced treatments like ICSI that can help.',
     metaKeywords: 'Male infertility, low sperm count, ICSI treatment, male fertility signs',
     targetQuestion: 'What are the most common causes of male infertility?',
@@ -245,7 +245,7 @@ export const newSeoBlogs = [
   {
     slug: 'freezing-your-eggs-best-age',
     title: 'Freezing Your Eggs: The Process, Costs, and Best Age to Do It',
-    image: '/img/1.jpg',
+    image: '/img/blogs/egg_freezing.png',
     metaDescription: 'Considering egg freezing? Learn about the ideal age to freeze your eggs, the step-by-step process, and what to expect financially.',
     metaKeywords: 'Egg freezing process, fertility preservation, oocyte cryopreservation, best age to freeze eggs',
     targetQuestion: 'What is the best age for a woman to freeze her eggs?',

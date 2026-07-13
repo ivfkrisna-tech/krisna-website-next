@@ -4,7 +4,7 @@ export const blogs = [
   {
     slug: 'best-ivf-center-jaipur-smart-fertility',
     title: 'Best IVF Center in Jaipur: Smart Fertility & Wearable Tech Sync',
-    image: '/img/1.jpg',
+    image: '/img/blogs/smart_fertility.png',
     contentFile: 'BlogPost1',
     toc: [
       { id: 'hormonal-monitoring', title: 'The Power of Real-Time Hormonal Monitoring' },
@@ -35,7 +35,7 @@ export const blogs = [
   {
     slug: 'microfluidic-sperm-sorting-lab-on-chip',
     title: 'Microfluidic Sperm Sorting: Mimicking Nature with Lab-on-a-Chip Technology',
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800',
+    image: '/img/blogs/microfluidic_sperm.png',
     contentFile: 'BlogPost2',
     toc: [
       { id: 'centrifugation', title: 'Moving Away from Traditional Centrifugation' },
@@ -67,7 +67,7 @@ export const blogs = [
   {
     slug: 'wearable-hormone-tracking-embryo-transfer',
     title: 'Wearable Hormone Tracking: The Future of Precision Embryo Transfer',
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800',
+    image: '/img/blogs/wearable_hormone.png',
     contentFile: 'BlogPost3',
     toc: [
       { id: 'window-definition', title: 'Defining the Window of Implantation' },
@@ -99,7 +99,7 @@ export const blogs = [
   {
     slug: 'probiotics-for-ivf-success-microbiome',
     title: 'Probiotics for Implantation: The Role of the Microbiome in IVF Success',
-    image: '/img/laboratory-2815641_1280.jpg',
+    image: '/img/blogs/probiotics_microbiome.png',
     contentFile: 'BlogPost4',
     toc: [
       { id: 'lacto-type', title: 'Vaginal Microbiome aur “Lacto-Type” Advantage' },
@@ -131,7 +131,7 @@ export const blogs = [
   {
     slug: 'egg-rejuvenation-shugoshin-1-science',
     title: 'Egg Rejuvenation Proteins: The Science of “Shugoshin 1”',
-    image: '/img/ivf-1.png',
+    image: '/img/blogs/egg_rejuvenation.png',
     contentFile: 'BlogPost5',
     toc: [
       { id: 'guardian-protein', title: 'The Role of Shugoshin 1 in Egg Health' },
@@ -162,7 +162,7 @@ export const blogs = [
   {
     slug: 'gluten-and-fertility-gut-health',
     title: 'Gluten and Fertility: Understanding the Link Between Gut Health and Reproductive Inflammation',
-    image: '/img/vuv.jpg',
+    image: '/img/blogs/gut_health.png',
     contentFile: 'BlogPost6',
     toc: [
       { id: 'gut-connection', title: 'The Gut-Fertility Connection' },
@@ -198,7 +198,7 @@ export const blogs = [
   {
     slug: 'male-fertility-superfoods-zinc-selenium',
     title: 'Fueling Sperm Health: The Ultimate Male Fertility Superfoods',
-    image: '/img/pexels-shvetsa-4484082.jpg',
+    image: '/img/blogs/male_superfoods.png',
     contentFile: 'BlogPost7',
     toc: [
       { id: 'zinc-foundation', title: 'Zinc: The Foundation of Sperm Production' },
@@ -271,7 +271,7 @@ export const blogs = [
   {
     slug: 'managing-pcos-low-gi-foods-insulin',
     title: 'Managing PCOS with Low-GI Foods: Balancing Insulin for Ovulation Regularity',
-    image: '/img/ivf-2.png',
+    image: '/img/blogs/pcos_diet.png',
     contentFile: 'BlogPost8',
     toc: [
       { id: 'insulin-connection', title: 'The Insulin-PCOS Connection' },

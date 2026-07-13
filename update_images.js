@@ -36,7 +36,7 @@ function updateFile(filePath) {
       const slug = slugMatch[1];
       const newImage = mapping[slug];
       if (newImage) {
-        return block.replace(/image:\s*'[^']+'/, \`image: '\${newImage}'\`);
+        return block.replace(/image:\s*'[^']+'/, "image: '" + newImage + "'");
       }
     }
     return block;

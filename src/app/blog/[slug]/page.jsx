@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
     title: blog?.metaTitle || `${blog?.title} | Krishna IVF`,
     description: blog?.metaDescription || 'Default description',
     keywords: blog?.metaKeywords,
-    alternates: { canonical: `https://krishnaivf.com/blog/${slug}` }
+    alternates: { canonical: `https://www.krisnaivfgroup5.com/blog/${slug}` }
   };
 }
 

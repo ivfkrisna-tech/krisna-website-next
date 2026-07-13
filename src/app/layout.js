@@ -32,9 +32,6 @@ export const metadata = {
     template: "%s | Krishna IVF Group"
   },
   description: "Compassionate and advanced fertility solutions including IVF, IUI, and ICSI by our expert team of specialists in Jaipur, Rajasthan.",
-  alternates: {
-    canonical: '/',
-  },
   verification: {
     google: "xCb2GxwneoFunV5V_N1GAbOE06rPgqG5ommrlsAmMHc",
   },

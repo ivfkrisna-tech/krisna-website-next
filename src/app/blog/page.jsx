@@ -10,18 +10,20 @@ export const metadata = {
   description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krishna IVF Group, Jaipur.',
 };
 
+import { blogs as localBlogs } from '@/data/blogs';
+
 // 1. Data fetch karne ke liye async function
 async function getBlogs() {
   try {
     await connectDB();
     const blogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
-    
-    // Convert ObjectIds to strings and clean up the object for Next.js Client Components
-    return JSON.parse(JSON.stringify(blogs));
+    if (blogs && blogs.length > 0) {
+      return JSON.parse(JSON.stringify(blogs));
+    }
   } catch (error) {
-    console.error("Database fetch failed:", error);
-    return []; // Database connect na ho to UI crash nahi hoga
+    console.error("Database fetch failed, falling back to local data:", error);
   }
+  return localBlogs; // Fallback
 }
 
 export default async function BlogPage() {

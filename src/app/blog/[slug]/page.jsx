@@ -6,6 +6,8 @@ import connectDB from '@/lib/mongodb';
 import { Blog } from '@/models/Data';
 import mongoose from 'mongoose';
 
+import { blogs as localBlogs } from '@/data/blogs';
+
 async function getBlog(slug) {
   try {
     await connectDB();
@@ -16,11 +18,13 @@ async function getBlog(slug) {
     if (!blog) {
         blog = await Blog.findOne({ slug: slug }).lean();
     }
-    return blog ? JSON.parse(JSON.stringify(blog)) : null;
+    if (blog) return JSON.parse(JSON.stringify(blog));
   } catch (error) {
-    console.error("Database fetch failed:", error);
-    return null;
+    console.error("Database fetch failed, falling back to local data:", error);
   }
+  
+  const localBlog = localBlogs.find(b => b.slug === slug);
+  return localBlog || null;
 }
 
 export async function generateMetadata({ params }) {

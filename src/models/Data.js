@@ -19,7 +19,8 @@ const DataSchema = new mongoose.Schema({
 
     
     coreEntities: { type: String, default: '' }, 
-    citations: { type: String, default: '' }
+    citations: { type: String, default: '' },
+    category: { type: String, default: '' } // Added for FAQs
 }, { timestamps: true });
 
 // Check if models exist, otherwise create them

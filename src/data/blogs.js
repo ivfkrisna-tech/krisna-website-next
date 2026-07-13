@@ -1,3 +1,5 @@
+import { newSeoBlogs } from './new_seo_blogs';
+
 export const blogs = [
   {
     slug: 'best-ivf-center-jaipur-smart-fertility',
@@ -120,3 +122,5 @@ export const blogs = [
     ]
   }
 ];
+
+blogs.push(...newSeoBlogs);

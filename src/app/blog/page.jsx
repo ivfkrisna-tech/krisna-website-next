@@ -25,9 +25,10 @@ async function getBlogs() {
     console.error("Database fetch failed, falling back to local data:", error);
   }
   
-  // Merge DB blogs with local blogs, avoiding duplicates by slug
+  // Merge DB blogs with local blogs (reversed so newest are first), avoiding duplicates by slug
   const allBlogs = [...dbBlogsParsed];
-  for (const localBlog of localBlogs) {
+  const reversedLocalBlogs = [...localBlogs].reverse();
+  for (const localBlog of reversedLocalBlogs) {
     if (!allBlogs.some(dbBlog => dbBlog.slug === localBlog.slug)) {
       allBlogs.push(localBlog);
     }

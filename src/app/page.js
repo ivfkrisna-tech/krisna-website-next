@@ -1,8 +1,8 @@
 import HomeContent from "@/components/HomeContent";
 
 export const metadata = {
-  title: 'Krishna IVF & Fertility Center | Jaipur',
-  description: 'Welcome to Krishna IVF, Jaipur\'s leading fertility center offering specialized IVF, IUI, and ICSI treatments.',
+  title: 'Krisna IVF & Fertility Center | Jaipur',
+  description: 'Welcome to Krisna IVF, Jaipur\'s leading fertility center offering specialized IVF, IUI, and ICSI treatments.',
 };
 
 export default function HomePage() {
@@ -10,7 +10,7 @@ export default function HomePage() {
   const medicalClinicSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
-    "name": "Krishna IVF Group",
+    "name": "Krisna IVF Group",
     "image": "https://www.krisnaivfgroup5.com/img/Krisna_Logo-removebg-preview.png",
     "@id": "https://www.krisnaivfgroup5.com/#clinic",
     "url": "https://www.krisnaivfgroup5.com/",
@@ -52,10 +52,10 @@ export default function HomePage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is the success rate of IVF at Krishna IVF Group in Jaipur?",
+        "name": "What is the success rate of IVF at Krisna IVF Group in Jaipur?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Krishna IVF Group offers highly advanced clean-room certified labs, resulting in some of the highest IVF success rates in the Rajasthan region. Success depends on individual factors, which our specialists evaluate during your consultation."
+          "text": "Krisna IVF Group offers highly advanced clean-room certified labs, resulting in some of the highest IVF success rates in the Rajasthan region. Success depends on individual factors, which our specialists evaluate during your consultation."
         }
       },
       {

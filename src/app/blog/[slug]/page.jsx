@@ -31,7 +31,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = await getBlog(slug);
   return {
-    title: blog?.metaTitle || `${blog?.title} | Krishna IVF`,
+    title: blog?.metaTitle || `${blog?.title} | Krisna IVF`,
     description: blog?.metaDescription || 'Default description',
     keywords: blog?.metaKeywords,
     alternates: { canonical: `https://www.krisnaivfgroup5.com/blog/${slug}` }
@@ -50,7 +50,7 @@ export default async function BlogDetail({ params }) {
     "@type": "BlogPosting",
     "headline": blog.title,
     "description": blog.metaDescription,
-    "author": { "@type": "Organization", "name": "Krishna IVF Group" },
+    "author": { "@type": "Organization", "name": "Krisna IVF Group" },
     "datePublished": blog.createdAt,
     // AEO support: Direct Answer ko FAQ style mein inject karna
     "mainEntity": blog.directAnswer ? {

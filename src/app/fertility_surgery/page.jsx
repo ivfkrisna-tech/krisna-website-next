@@ -1,8 +1,8 @@
 import SurgeryContent from "@/components/SurgeryContent";
 
 export const metadata = {
-  title: 'Fertility Enhancing Surgeries in Jaipur | Krishna IVF Group',
-  description: 'Expert laparoscopic and hysteroscopic fertility surgeries at Krishna IVF, Jaipur. Minimally invasive care for structural fertility issues.',
+  title: 'Fertility Enhancing Surgeries in Jaipur | Krisna IVF Group',
+  description: 'Expert laparoscopic and hysteroscopic fertility surgeries at Krisna IVF, Jaipur. Minimally invasive care for structural fertility issues.',
 };
 
 export default function SurgeryPage() {
@@ -12,7 +12,7 @@ export default function SurgeryPage() {
     "name": "Fertility Enhancing Surgeries",
     "provider": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group",
+      "name": "Krisna IVF Group",
       "address": { "@type": "PostalAddress", "addressLocality": "Jaipur" }
     },
     "description": "Minimally invasive laparoscopic and hysteroscopic surgeries for fertility restoration."

@@ -6,8 +6,8 @@ import { Blog } from '@/models/Data';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Fertility Insights & IVF Blogs | Krishna IVF Jaipur',
-  description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krishna IVF Group, Jaipur.',
+  title: 'Fertility Insights & IVF Blogs | Krisna IVF Jaipur',
+  description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krisna IVF Group, Jaipur.',
 };
 
 import { blogs as localBlogs } from '@/data/blogs';
@@ -47,7 +47,7 @@ export default async function BlogPage() {
     "description": "Expert advice and articles on IVF and fertility treatments.",
     "publisher": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group"
+      "name": "Krisna IVF Group"
     }
   };
 

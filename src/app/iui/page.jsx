@@ -1,8 +1,8 @@
 import IUIContent from "@/components/IUIContent";
 
 export const metadata = {
-  title: 'IUI Treatment in Jaipur | Krishna IVF Center',
-  description: 'Learn about IUI (Intrauterine Insemination) at Krishna IVF. A simple, affordable, and effective fertility procedure.',
+  title: 'IUI Treatment in Jaipur | Krisna IVF Center',
+  description: 'Learn about IUI (Intrauterine Insemination) at Krisna IVF. A simple, affordable, and effective fertility procedure.',
 };
 
 export default function IUIPage() {
@@ -13,7 +13,7 @@ export default function IUIPage() {
     "description": "A fertility treatment involving the placement of sperm into the uterus to facilitate fertilization.",
     "provider": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Center",
+      "name": "Krisna IVF Center",
       "address": { "@type": "PostalAddress", "addressLocality": "Jaipur" }
     }
   };

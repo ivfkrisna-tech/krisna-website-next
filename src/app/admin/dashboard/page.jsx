@@ -42,7 +42,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
-        <h2>Krishna IVF</h2>
+        <h2>Krisna IVF</h2>
         <nav>
           <p onClick={() => setActiveTab('dashboard')} className={activeTab === 'dashboard' ? 'active' : ''}>📊 Dashboard</p>
           <p onClick={() => setActiveTab('blogs')} className={activeTab === 'blogs' ? 'active' : ''}>📝 Manage Blogs</p>

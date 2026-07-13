@@ -14,7 +14,7 @@ export default function InfertilityAssessmentPage() {
     "name": "Infertility",
     "recognizingAuthority": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group"
+      "name": "Krisna IVF Group"
     },
     "possibleTreatment": [
       { "@type": "MedicalProcedure", "name": "Semen Analysis" },
@@ -43,7 +43,7 @@ export default function InfertilityAssessmentPage() {
             <div className="why-content">
               <h3 style={{ color: 'var(--brand-pink)', textTransform: 'uppercase' }}>Find the Root Cause</h3>
               <h2>Comprehensive <br /><span style={{ color: 'var(--brand-teal)' }}>Fertility Evaluation</span></h2>
-              <p>At <strong>Krishna IVF</strong>, we use advanced diagnostic technology to assess both male and female fertility factors accurately.</p>
+              <p>At <strong>Krisna IVF</strong>, we use advanced diagnostic technology to assess both male and female fertility factors accurately.</p>
               <Link href="/contact" className="btn-primary">Book an Assessment</Link>
             </div>
             <div>

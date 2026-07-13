@@ -14,7 +14,7 @@ export default function ICSIPage() {
     "description": "A specialized IVF technique for male factor infertility involving direct injection of sperm into an egg.",
     "provider": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group",
+      "name": "Krisna IVF Group",
       "address": { "@type": "PostalAddress", "addressLocality": "Jaipur" }
     }
   };

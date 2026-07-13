@@ -6,7 +6,7 @@ import { localFaqs } from '@/data/faqs';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Frequently Asked Questions | Krishna IVF Jaipur',
+  title: 'Frequently Asked Questions | Krisna IVF Jaipur',
   description: 'Your fertility journey clarified. Answers to common concerns regarding IVF, costs, treatments, and more.',
 };
 

@@ -1,7 +1,7 @@
 import DonorContent from "@/components/DonorContent";
 
 export const metadata = {
-  title: 'Donor IVF Services in Jaipur | Krishna IVF Group',
+  title: 'Donor IVF Services in Jaipur | Krisna IVF Group',
   description: 'Explore donor egg and embryo IVF services.',
 };
 
@@ -14,7 +14,7 @@ export default function DonorPage() {
     "name": "Donor IVF Services",
     "provider": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group",
+      "name": "Krisna IVF Group",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Jaipur",

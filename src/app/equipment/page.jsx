@@ -11,7 +11,7 @@ export default function EquipmentPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "name": "Krishna IVF Group",
+    "name": "Krisna IVF Group",
     "description": "Fertility clinic in Jaipur equipped with advanced embryology and surgical technology.",
     "areaServed": "Jaipur"
   };

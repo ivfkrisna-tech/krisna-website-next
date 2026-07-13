@@ -242,7 +242,7 @@ useEffect(() => {
           <h2 className="section-title">Serving Jaipur & Rajasthan</h2>
           <div className="local-seo-container">
             <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.1rem', color: '#555' }}>
-              Krishna IVF Group is a premier destination in Jaipur, offering world-class, scientifically backed fertility treatments to patients across the region.
+              Krisna IVF Group is a premier destination in Jaipur, offering world-class, scientifically backed fertility treatments to patients across the region.
             </p>
             <div className="local-grid">
               <div className="local-card glass-card">

@@ -10,11 +10,11 @@ export default function LabGalleryPage() {
   const gallerySchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Krishna IVF Lab Facilities",
+    "name": "Krisna IVF Lab Facilities",
     "description": "State-of-the-art sterile IVF laboratory with advanced incubation and microscopic technology.",
     "provider": {
       "@type": "MedicalBusiness",
-      "name": "Krishna IVF Group"
+      "name": "Krisna IVF Group"
     }
   };
 

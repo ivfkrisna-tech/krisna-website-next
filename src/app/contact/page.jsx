@@ -7,11 +7,11 @@ import { useState } from "react";
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "Contact Krishna IVF Group",
-  "description": "Get in touch with Krishna IVF for fertility consultation in Jaipur.",
+  "name": "Contact Krisna IVF Group",
+  "description": "Get in touch with Krisna IVF for fertility consultation in Jaipur.",
   "mainEntity": {
     "@type": "MedicalBusiness",
-    "name": "Krishna IVF Group",
+    "name": "Krisna IVF Group",
     "telephone": "+919119115355",
     "address": {
       "@type": "PostalAddress",

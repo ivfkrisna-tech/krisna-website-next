@@ -10,7 +10,7 @@ export default function CertificatesPage() {
   const trustSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "name": "Krishna IVF Group",
+    "name": "Krisna IVF Group",
     "award": "ISO Certified Quality Assurance & Fertility Excellence",
     "address": {
       "@type": "PostalAddress",
@@ -44,7 +44,7 @@ export default function CertificatesPage() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '20px' }}>
               Standards of <span style={{ color: 'var(--brand-teal)' }}>Excellence</span>
             </h2>
-            <p>At Krishna IVF Center, we adhere to the highest international standards of safety and quality. Our certifications reflect our unwavering commitment to ethics, transparency, and clinical excellence in reproductive healthcare.</p>
+            <p>At Krisna IVF Center, we adhere to the highest international standards of safety and quality. Our certifications reflect our unwavering commitment to ethics, transparency, and clinical excellence in reproductive healthcare.</p>
           </div>
 
           <div className="cert-grid">

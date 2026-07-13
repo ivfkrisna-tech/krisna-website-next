@@ -133,7 +133,7 @@
     /* ============================================================
        3. BLOG SPECIFIC STYLES
        ============================================================ */
-    .blog-page-header { background: url('/img/homebanner.png') no-repeat center center/cover;
+    .blog-page-header { background: url('/img/dr.ssunita.png') no-repeat center center/cover;
       position: relative;
       padding: 120px 8% 80px;
       text-align: center;
@@ -366,7 +366,7 @@
 
 /* Blog Detail Page */
 .blog-detail-hero {
-  background: url('/img/homebanner.png') no-repeat center center/cover;
+  background: url('/img/dr.ssunita.png') no-repeat center center/cover;
   position: relative;
   border-radius: 0 0 50px 50px;
   overflow: hidden;

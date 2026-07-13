@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import { Blog, FAQ, Story } from '@/models/Data';
 
+export const dynamic = 'force-dynamic';
+
 const getModel = (type) => {
     const models = {
         'blogs': Blog,

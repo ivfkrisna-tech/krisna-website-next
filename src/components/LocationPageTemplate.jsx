@@ -266,7 +266,7 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
       <section className="section" style={{ padding: '80px 5%', background: '#fdfbf9' }}>
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', color: '#222', marginBottom: '40px', textAlign: 'center' }}>
-            Frequently Asked Questions (AEO Optimized)
+            Frequently Asked Questions
           </h2>
           
           <div className="faq-item" style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid #ddd' }}>

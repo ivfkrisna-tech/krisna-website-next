@@ -28,7 +28,7 @@ export default function AboutContent() {
             <div className="why-content">
               <h3 style={{ color: 'var(--brand-pink)', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.9rem', fontWeight: '700' }}>Who We Are</h3>
               <h2 style={{ marginBottom: '25px' }}>Creating Miracles with <br /><span style={{ color: 'var(--brand-teal)' }}>Happiness &amp; Science</span></h2>
-              <p>At Krisna IVF &amp; Fertility Center, we understand that the journey to parenthood is one of the most emotional phases of life. Founded on the pillars of ethics, transparency, and advanced medical science, we are dedicated to turning your dream of a family into reality.</p>
+              <p>At Krisna IVF &amp; Fertility Center, widely regarded as the <strong>best ivf center in jaipur rajasthan india</strong>, we understand that the journey to parenthood is one of the most emotional phases of life. Founded on the pillars of ethics, transparency, and advanced medical science, we are dedicated to turning your dream of a family into reality.</p>
               <p>We combine state-of-the-art reproductive technology with a compassionate, personalized approach. Every patient is unique, and so is our treatment plan for them.</p>
               <ul className="check-list" style={{ marginTop: '30px' }}>
                 <li>Ethical &amp; Transparent Practices</li>

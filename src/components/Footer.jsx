@@ -43,6 +43,18 @@ export default function Footer() {
         </div>
 
         <div>
+          <h3>Top Locations</h3>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <li><Link href="/best-ivf-center-in-jaipur">Best IVF Center in Jaipur</Link></li>
+            <li><Link href="/best-ivf-center-in-jodhpur">Best IVF Center in Jodhpur</Link></li>
+            <li><Link href="/best-ivf-center-in-udaipur">Best IVF Center in Udaipur</Link></li>
+            <li><Link href="/best-ivf-center-in-kota">Best IVF Center in Kota</Link></li>
+            <li><Link href="/best-ivf-center-in-ajmer">Best IVF Center in Ajmer</Link></li>
+            <li><Link href="/best-ivf-center-in-bikaner">Best IVF Center in Bikaner</Link></li>
+          </ul>
+        </div>
+
+        <div>
           <h3>Contact</h3>
           <p style={{ marginBottom: '10px' }}>
             <i className="fa-solid fa-location-dot" style={{ color: 'var(--brand-pink)', width: '20px' }}></i> 

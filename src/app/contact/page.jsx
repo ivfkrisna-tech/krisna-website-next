@@ -15,7 +15,7 @@ const contactSchema = {
     "telephone": "+919119115355",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "3rd Floor, House of Doctors, Plot No.4, Lal Niwas, Hira Bagh, Tonk Road",
+      "streetAddress": "Plot No. 295 & 280, Intune, 3rd Floor, Gom Defence Colony, Vaishali Marg, Vaishali Nagar",
       "addressLocality": "Jaipur",
       "addressRegion": "Rajasthan",
       "postalCode": "302021",
@@ -94,8 +94,8 @@ export default function ContactPage() {
             <div className="contact-card">
               <div className="contact-icon"><i className="fa-solid fa-location-dot"></i></div>
               <h3>Visit Us</h3>
-              <p style={{ marginBottom: '5px', fontWeight: '500' }}>House of Doctors, Jaipur</p>
-              <p style={{ color: '#888', fontSize: '0.9rem' }}>Near SMS Hospital</p>
+              <p style={{ marginBottom: '5px', fontWeight: '500' }}>Vaishali Nagar, Jaipur</p>
+              <p style={{ color: '#888', fontSize: '0.9rem' }}>Gom Defence Colony</p>
             </div>
           </div>
         </section>
@@ -142,9 +142,9 @@ export default function ContactPage() {
                 <div>
                   <strong style={{ fontSize: '1.1rem', display: 'block', marginBottom: '5px' }}>Headquarters</strong>
                   <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6' }}>
-                    3rd Floor, House of Doctors, Plot No.4,<br />
-                    Lal Niwas, Hira Bagh, Tonk Road,<br />
-                    Near SMS Hospital, Jaipur, Rajasthan 302021
+                    Plot No. 295 & 280, Intune, 3rd Floor,<br />
+                    Gom Defence Colony, Vaishali Marg,<br />
+                    Vaishali Nagar, Jaipur, Rajasthan - 302021
                   </p>
                 </div>
               </div>

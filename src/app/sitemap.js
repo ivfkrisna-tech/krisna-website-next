@@ -22,7 +22,13 @@ export default async function sitemap() {
     '/infertility-assessment',
     '/lab-gallery',
     '/our-team',
-    '/success'
+    '/success',
+    '/best-ivf-center-in-jaipur',
+    '/best-ivf-center-in-ajmer',
+    '/best-ivf-center-in-bikaner',
+    '/best-ivf-center-in-jodhpur',
+    '/best-ivf-center-in-kota',
+    '/best-ivf-center-in-udaipur'
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

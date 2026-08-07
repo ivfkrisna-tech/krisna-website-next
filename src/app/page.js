@@ -14,13 +14,13 @@ export default function HomePage() {
     "image": "https://www.krisnaivfgroup5.com/img/Krisna_Logo-removebg-preview.png",
     "@id": "https://www.krisnaivfgroup5.com/#clinic",
     "url": "https://www.krisnaivfgroup5.com/",
-    "telephone": "+91-XXXXXXXXXX", // Add actual phone number
+    "telephone": "+919119115355",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Your Exact Street Address", // Add exact address
+      "streetAddress": "Plot No. 295 & 280, Intune, 3rd Floor, Gom Defence Colony, Vaishali Marg, Vaishali Nagar",
       "addressLocality": "Jaipur",
       "addressRegion": "Rajasthan",
-      "postalCode": "302001", // Add actual PIN
+      "postalCode": "302021",
       "addressCountry": "IN"
     },
     "geo": {

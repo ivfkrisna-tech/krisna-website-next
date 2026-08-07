@@ -118,7 +118,7 @@
       100% { box-shadow: 0 0 0 0 rgba(217, 26, 138, 0); }
     }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .reveal { opacity: 1; transform: none; transition: 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* ============================================================

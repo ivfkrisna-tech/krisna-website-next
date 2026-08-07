@@ -58,9 +58,9 @@ export default function Footer() {
           <h3>Contact</h3>
           <p style={{ marginBottom: '10px' }}>
             <i className="fa-solid fa-location-dot" style={{ color: 'var(--brand-pink)', width: '20px' }}></i> 
-            3rd Floor, House of Doctors, Plot No.4,
-            Lal Niwas, Hira Bagh, Tonk Road,
-            Near SMS Hospital, Jaipur, Rajasthan 302021
+            Plot No. 295 & 280, Intune, 3rd Floor,
+            Gom Defence Colony, Vaishali Marg,
+            Vaishali Nagar, Jaipur, Rajasthan - 302021
           </p>
           <p style={{ marginBottom: '10px' }}>
             <a href="tel:+919119115355" style={{ color: '#ccc' }}>

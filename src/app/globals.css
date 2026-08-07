@@ -76,8 +76,8 @@ i {
 
 /* Reveal Animation (Cleaned up temporary override) */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: all 0.8s ease-out;
 }
 

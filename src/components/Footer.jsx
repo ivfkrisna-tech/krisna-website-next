@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
       
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '50px', paddingTop: '20px', textAlign: 'center', fontSize: '0.8rem', opacity: '0.7' }}>
-        &copy; 2026 Krisna IVF Center. All Rights Reserved.
+        &copy; 2026 Krisna IVF Center. All Rights Reserved. Designed & Developed by <a href="https://amazingit.in/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand-pink)', fontWeight: 'bold' }}>Amazing IT</a>.
       </div>
     </footer>
   );

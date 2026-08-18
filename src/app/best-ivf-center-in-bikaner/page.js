@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-bikaner',
+  },
   title: 'Best IVF Center in Bikaner | Krisna IVF',
   description: 'Looking for the best IVF center in Bikaner? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

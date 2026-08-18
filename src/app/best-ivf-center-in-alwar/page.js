@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-alwar',
+  },
   title: 'Best IVF Center in Alwar | Krisna IVF',
   description: 'Looking for the best IVF center in Alwar? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

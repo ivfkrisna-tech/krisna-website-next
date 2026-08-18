@@ -1,4 +1,7 @@
 export const metadata = {
+  alternates: {
+    canonical: '/certificates',
+  },
   title: "Accreditations & Certificates | Krisna IVF Group",
   description: "View the national and international accreditations, certifications, and awards earned by Krisna IVF Group for excellence in fertility care.",
 };

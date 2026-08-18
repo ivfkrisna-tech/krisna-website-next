@@ -6,6 +6,9 @@ import { Blog } from '@/models/Data';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
+  alternates: {
+    canonical: '/blog',
+  },
   title: 'Fertility Insights & IVF Blogs | Krisna IVF Jaipur',
   description: 'Explore expert fertility advice, latest medical breakthroughs in IVF, and success stories at Krisna IVF Group, Jaipur.',
 };

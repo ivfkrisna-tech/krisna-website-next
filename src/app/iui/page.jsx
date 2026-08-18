@@ -1,6 +1,9 @@
 import IUIContent from "@/components/IUIContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/iui',
+  },
   title: 'IUI Treatment in Jaipur | Krisna IVF Center',
   description: 'Learn about IUI (Intrauterine Insemination) at Krisna IVF. A simple, affordable, and effective fertility procedure.',
 };

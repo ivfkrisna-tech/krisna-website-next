@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-jaisalmer',
+  },
   title: 'Best IVF Center in Jaisalmer | Krisna IVF',
   description: 'Looking for the best IVF center in Jaisalmer? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

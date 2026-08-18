@@ -1,6 +1,9 @@
 import HomeContent from "@/components/HomeContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
   title: 'Krisna IVF & Fertility Center | Jaipur',
   description: 'Welcome to Krisna IVF, Jaipur\'s leading fertility center offering specialized IVF, IUI, and ICSI treatments.',
 };

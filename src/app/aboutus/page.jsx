@@ -1,6 +1,9 @@
 import AboutContent from "@/components/AboutContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/aboutus',
+  },
   title: 'About Us | Krisna IVF Group Jaipur',
   description: 'Learn about Krisna IVF Group, Jaipur. Our expert team, advanced lab technology, and commitment to your parenthood journey.',
 };

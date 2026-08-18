@@ -1,6 +1,9 @@
 import DonorContent from "@/components/DonorContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/donor',
+  },
   title: 'Donor IVF Services in Jaipur | Krisna IVF Group',
   description: 'Explore donor egg and embryo IVF services.',
 };

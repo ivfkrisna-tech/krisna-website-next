@@ -1,6 +1,9 @@
 import SurgeryContent from "@/components/SurgeryContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/fertility_surgery',
+  },
   title: 'Fertility Enhancing Surgeries in Jaipur | Krisna IVF Group',
   description: 'Expert laparoscopic and hysteroscopic fertility surgeries at Krisna IVF, Jaipur. Minimally invasive care for structural fertility issues.',
 };

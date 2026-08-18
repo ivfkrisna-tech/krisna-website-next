@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-pali',
+  },
   title: 'Best IVF Center in Pali | Krisna IVF',
   description: 'Looking for the best IVF center in Pali? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

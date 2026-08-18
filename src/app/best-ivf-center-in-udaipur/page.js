@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-udaipur',
+  },
   title: 'Best IVF Center in Udaipur | Krisna IVF',
   description: 'Looking for the best IVF center in Udaipur? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

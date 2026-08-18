@@ -26,6 +26,9 @@ import Footer from "@/components/Footer";
 import FloatButtons from "@/components/FloatButtons";
 
 export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
   metadataBase: new URL('https://www.krisnaivfgroup5.com'),
   title: {
     default: "Krisna IVF Group | Advanced Fertility Care in Jaipur",

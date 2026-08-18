@@ -1,6 +1,9 @@
 import IVFContent from "@/components/IVFContent";
 
 export const metadata = {
+  alternates: {
+    canonical: '/ivf',
+  },
   title: 'IVF Treatment in Jaipur | Krisna IVF Center',
   description: 'Experience high-success IVF treatment in Jaipur. From advanced lab technology to personalized fertility protocols, we guide you to parenthood.',
 };

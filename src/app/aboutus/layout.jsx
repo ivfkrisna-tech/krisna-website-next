@@ -1,4 +1,7 @@
 export const metadata = {
+  alternates: {
+    canonical: '/aboutus',
+  },
   title: "About Krisna IVF Group | Leading Fertility Specialists in Jaipur",
   description: "Learn about Krisna IVF Group, our mission, state-of-the-art facilities, and our dedicated team of fertility specialists.",
 };

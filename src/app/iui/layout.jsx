@@ -1,4 +1,7 @@
 export const metadata = {
+  alternates: {
+    canonical: '/iui',
+  },
   title: "IUI Treatment in Jaipur | Best IUI Clinic | Krisna IVF Group",
   description: "Affordable and effective Intrauterine Insemination (IUI) treatments in Jaipur at Krisna IVF Group. Expert fertility care to help you conceive naturally.",
 };

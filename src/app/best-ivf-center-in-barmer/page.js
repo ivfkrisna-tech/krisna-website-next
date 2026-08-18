@@ -1,6 +1,9 @@
 import LocationPageTemplate from '@/components/LocationPageTemplate';
 
 export const metadata = {
+  alternates: {
+    canonical: '/best-ivf-center-in-barmer',
+  },
   title: 'Best IVF Center in Barmer | Krisna IVF',
   description: 'Looking for the best IVF center in Barmer? Krisna IVF provides world-class fertility treatments with high success rates.',
 };

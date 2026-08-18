@@ -24,7 +24,7 @@ export default function IUIContent() {
               <h3 style={{ color: 'var(--brand-pink)', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.9rem', fontWeight: '700' }}>Intrauterine Insemination</h3>
               <h2 style={{ marginBottom: '25px' }}>Simple &amp; Effective <br /><span style={{ color: 'var(--brand-teal)' }}>Fertility Treatment</span></h2>
               <p>Intrauterine Insemination (IUI) is a minimally invasive fertility treatment where washed and processed sperm are placed directly into the uterine cavity at the time of ovulation. This procedure significantly increases the chances of pregnancy by placing high-quality sperm closer to the egg.</p>
-              <p>IUI is often the first line of treatment at <strong>Krisna IVF Center</strong> because it is less invasive and more affordable than IVF. Our specialized preparation ensures only the most robust sperm are used.</p>
+              <p>IUI is often the first line of treatment at <strong>Krisna IVF Center</strong> because it is less invasive and more affordable than <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link>. Our specialized preparation ensures only the most robust sperm are used.</p>
               <br />
               <Link href="/contact" className="btn-primary">Enquire Now</Link>
             </div>

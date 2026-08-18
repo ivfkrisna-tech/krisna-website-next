@@ -72,6 +72,14 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
     ]
   };
 
+  const locations = [
+    'Jaipur', 'Jodhpur', 'Udaipur', 'Kota', 'Ajmer', 
+    'Bikaner', 'Alwar', 'Bharatpur', 'Sikar', 'Bhilwara', 
+    'Pali', 'Sri Ganganagar', 'Hanumangarh', 'Barmer', 
+    'Chittorgarh', 'Nagaur', 'Jhunjhunu', 'Tonk', 
+    'Sawai Madhopur', 'Jaisalmer'
+  ];
+
   return (
     <main>
       <Head>
@@ -174,10 +182,10 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
           {/* Treatment 1 */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', marginBottom: '60px', alignItems: 'center' }}>
             <div style={{ flex: '1 1 400px' }}>
-              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}>In Vitro Fertilization (IVF)</h3>
+              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}><Link href="/ivf" style={{color: 'inherit'}}>In Vitro Fertilization (IVF)</Link></h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
-                IVF is a revolutionary procedure where eggs are retrieved from the woman's ovaries and fertilized with the man's sperm in our highly advanced, sterile laboratory. After fertilization, the resulting embryos are carefully nurtured in state-of-the-art incubators that mimic the human uterus environment. After 3 to 5 days, the healthiest embryo is expertly transferred back into the mother's uterus.
-                IVF is highly recommended for women with blocked fallopian tubes, severe endometriosis, or when other treatments like IUI have failed. For our patients traveling from {city}, we meticulously plan the stimulation cycles so that you only need to travel for the most critical procedures.
+                <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link> is a revolutionary procedure where eggs are retrieved from the woman's ovaries and fertilized with the man's sperm in our highly advanced, sterile laboratory. After fertilization, the resulting embryos are carefully nurtured in state-of-the-art incubators that mimic the human uterus environment. After 3 to 5 days, the healthiest embryo is expertly transferred back into the mother's uterus.
+                <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link> is highly recommended for women with blocked fallopian tubes, severe endometriosis, or when other treatments like <Link href="/iui" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IUI</Link> have failed. For our patients traveling from {city}, we meticulously plan the stimulation cycles so that you only need to travel for the most critical procedures.
               </p>
             </div>
             <div style={{ flex: '1 1 300px' }}>
@@ -188,9 +196,9 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
           {/* Treatment 2 */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', marginBottom: '60px', alignItems: 'center', flexDirection: 'row-reverse' }}>
             <div style={{ flex: '1 1 400px' }}>
-              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}>Intracytoplasmic Sperm Injection (ICSI)</h3>
+              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}><Link href="/icsi" style={{color: 'inherit'}}>Intracytoplasmic Sperm Injection (ICSI)</Link></h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
-                For cases involving severe male factor infertility, ICSI is a game-changer. Unlike conventional IVF where many sperm are placed near an egg in a dish, ICSI involves the selection of a single, highly morphologically normal and motile sperm, which is then directly microinjected into the cytoplasm of a mature egg.
+                For cases involving severe male factor infertility, <Link href="/icsi" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>ICSI</Link> is a game-changer. Unlike conventional <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link> where many sperm are placed near an egg in a dish, ICSI involves the selection of a single, highly morphologically normal and motile sperm, which is then directly microinjected into the cytoplasm of a mature egg.
                 This advanced technique bypasses the need for the sperm to penetrate the egg naturally, dramatically increasing fertilization rates. It is the treatment of choice for men with extremely low sperm counts or poor motility. Our senior embryologists possess exceptional micromanipulation skills, ensuring the highest success rates for this delicate procedure.
               </p>
             </div>
@@ -202,10 +210,10 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
           {/* Treatment 3 */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', marginBottom: '40px', alignItems: 'center' }}>
             <div style={{ flex: '1 1 400px' }}>
-              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}>Intrauterine Insemination (IUI) & Donor Services</h3>
+              <h3 style={{ fontSize: '1.8rem', color: '#333', marginBottom: '15px' }}><Link href="/iui" style={{color: 'inherit'}}>Intrauterine Insemination (IUI)</Link> & <Link href="/donor" style={{color: 'inherit'}}>Donor Services</Link></h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
-                IUI is a simpler, less invasive fertility treatment where a concentrated, highly motile semen sample is placed directly into the uterine cavity around the time of ovulation. It is often the first line of treatment for unexplained infertility or mild male factor issues.
-                Additionally, for couples who cannot conceive using their own gametes due to severe medical conditions, we offer ethical and thoroughly screened Donor Egg and Donor Sperm programs. Our donor programs strictly adhere to all national ART guidelines, ensuring complete anonymity, legal safety, and the highest standards of genetic and medical screening.
+                <Link href="/iui" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IUI</Link> is a simpler, less invasive fertility treatment where a concentrated, highly motile semen sample is placed directly into the uterine cavity around the time of ovulation. It is often the first line of treatment for unexplained infertility or mild male factor issues.
+                Additionally, for couples who cannot conceive using their own gametes due to severe medical conditions, we offer ethical and thoroughly screened <Link href="/donor" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>Donor Egg and Donor Sperm</Link> programs. Our donor programs strictly adhere to all national ART guidelines, ensuring complete anonymity, legal safety, and the highest standards of genetic and medical screening.
               </p>
             </div>
           </div>
@@ -325,6 +333,43 @@ export default function LocationPageTemplate({ city, nearbyAreas, localKeywords 
         <Link href="/contact" className="btn-primary" style={{ background: '#fff', color: 'var(--brand-teal)', boxShadow: 'none', padding: '15px 40px', fontSize: '1.1rem', borderRadius: '30px', fontWeight: 'bold' }}>
           Book an Appointment
         </Link>
+      </section>
+
+      {/* Internal Linking / Areas We Serve */}
+      <section className="section" style={{ padding: '60px 5%', background: '#fff' }}>
+        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2rem', color: '#222', marginBottom: '30px', textAlign: 'center' }}>
+            Other Areas We Serve in Rajasthan
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '15px' }}>
+            {locations.filter(l => l !== city).map((loc) => (
+              <Link 
+                key={loc}
+                href={`/best-ivf-center-in-${loc.toLowerCase().replace(/\s+/g, '-')}`}
+                style={{ 
+                  padding: '15px', 
+                  background: '#fdfbf9', 
+                  border: '1px solid #eee', 
+                  borderRadius: '8px', 
+                  textAlign: 'center',
+                  color: 'var(--brand-teal-dark)',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = 'var(--brand-teal)';
+                  e.currentTarget.style.color = '#fff';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = '#fdfbf9';
+                  e.currentTarget.style.color = 'var(--brand-teal-dark)';
+                }}
+              >
+                Best IVF Center in {loc}
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );

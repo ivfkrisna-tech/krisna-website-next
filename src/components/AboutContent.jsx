@@ -33,7 +33,7 @@ export default function AboutContent() {
               <ul className="check-list" style={{ marginTop: '30px' }}>
                 <li>Ethical &amp; Transparent Practices</li>
                 <li>World-Class Embryology Lab</li>
-                <li>High Success Rates in IVF &amp; ICSI</li>
+                <li>High Success Rates in <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link> &amp; <Link href="/icsi" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>ICSI</Link></li>
               </ul>
             </div>
           </div>

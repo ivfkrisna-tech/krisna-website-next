@@ -48,7 +48,7 @@ useEffect(() => {
                 Bring Home the <br /> Joy of <span>Parenthood.</span>
               </h1>
               <p style={{ fontSize: '1.15rem', color: '#666', maxWidth: '90%', marginBottom: '30px' }}>
-                We combine advanced science with heartfelt compassion to turn your dreams into reality. Experience world-class IVF treatment personalized just for you.
+                We combine advanced science with heartfelt compassion to turn your dreams into reality. Experience world-class <Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF treatment</Link> personalized just for you.
               </p>
               <div className="hero-actions">
                 <Link href="/contact" className="btn-primary pulse-btn">Book Consultation</Link>
@@ -121,25 +121,25 @@ useEffect(() => {
           <div className="grid-services">
             <div className="service-card">
               <i className="fa-solid fa-dna service-icon"></i>
-              <h3>IVF Treatment</h3>
-              <p>In Vitro Fertilization (IVF) is an advanced reproductive technology where an egg is fertilized by sperm in a state-of-the-art laboratory incubator to overcome severe infertility factors.</p>
+              <h3><Link href="/ivf" style={{color: 'inherit', textDecoration: 'none'}}>IVF Treatment</Link></h3>
+              <p>In Vitro Fertilization (<Link href="/ivf" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IVF</Link>) is an advanced reproductive technology where an egg is fertilized by sperm in a state-of-the-art laboratory incubator to overcome severe infertility factors.</p>
               <Link href="/ivf" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
               <i className="fa-solid fa-syringe service-icon"></i>
-              <h3>IUI Procedure</h3>
-              <p>Intrauterine Insemination (IUI) is a fertility treatment that involves placing sperm directly inside a woman's uterus to facilitate fertilization during ovulation.</p>
+              <h3><Link href="/iui" style={{color: 'inherit', textDecoration: 'none'}}>IUI Procedure</Link></h3>
+              <p>Intrauterine Insemination (<Link href="/iui" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>IUI</Link>) is a fertility treatment that involves placing sperm directly inside a woman's uterus to facilitate fertilization during ovulation.</p>
               <Link href="/iui" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
               <i className="fa-solid fa-microscope service-icon"></i>
-              <h3>ICSI Procedure</h3>
-              <p>Intracytoplasmic Sperm Injection (ICSI) is a specialized IVF technique where a single healthy sperm is micro-injected into a mature egg to treat male factor infertility.</p>
+              <h3><Link href="/icsi" style={{color: 'inherit', textDecoration: 'none'}}>ICSI Procedure</Link></h3>
+              <p>Intracytoplasmic Sperm Injection (<Link href="/icsi" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>ICSI</Link>) is a specialized <Link href="/ivf" style={{color: 'inherit', textDecoration: 'underline'}}>IVF technique</Link> where a single healthy sperm is micro-injected into a mature egg to treat male factor infertility.</p>
               <Link href="/icsi" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>
             <div className="service-card">
               <i className="fa-solid fa-user-md service-icon"></i>
-              <h3>Fertility Surgery</h3>
+              <h3><Link href="/fertility_surgery" style={{color: 'inherit', textDecoration: 'none'}}>Fertility Surgery</Link></h3>
               <p>Minimally invasive reproductive surgeries, including laparoscopy, are performed to correct anatomical issues and significantly improve natural conception chances.</p>
               <Link href="/fertility_surgery" className="service-link">Read More <i className="fa-solid fa-arrow-right"></i></Link>
             </div>

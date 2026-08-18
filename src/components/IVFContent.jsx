@@ -24,7 +24,7 @@ export default function IVFContent() {
               <h3 style={{ color: 'var(--brand-pink)', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.9rem', fontWeight: '700' }}>What is IVF?</h3>
               <h2 style={{ marginBottom: '25px' }}>Advanced Fertility <br /><span style={{ color: 'var(--brand-teal)' }}>Treatment</span></h2>
               <p>In Vitro Fertilisation (IVF) is a process where eggs are retrieved from the ovaries and fertilized with sperm in a controlled laboratory environment. The resulting embryo is then transferred into the uterus to achieve pregnancy.</p>
-              <p>At <strong>Krisna IVF Center</strong>, recognized as the <strong>best ivf center in jaipur rajasthan india</strong>, we use advanced laboratory technology and personalized protocols to ensure the best possible outcomes, closely supporting the natural conception process while significantly increasing success rates.</p>
+              <p>At <strong>Krisna IVF Center</strong>, recognized as the <strong>best ivf center in jaipur rajasthan india</strong>, we use advanced laboratory technology and personalized protocols to ensure the best possible outcomes, closely supporting the natural conception process while significantly increasing success rates. For severe male factor infertility, we may combine this with <Link href="/icsi" style={{color: 'var(--brand-teal)', fontWeight: 'bold', textDecoration: 'none'}}>ICSI</Link> (Intracytoplasmic Sperm Injection).</p>
               <br />
               <Link href="/contact" className="btn-primary">Enquire Now</Link>
             </div>

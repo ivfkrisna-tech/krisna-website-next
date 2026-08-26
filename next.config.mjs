@@ -22,6 +22,10 @@ const nextConfig = {
       { source: '/blog/best-ivf-centre-in-jaipur-a-comprehensive-guide-to-your-options', destination: '/best-ivf-center-in-jaipur', permanent: true },
       { source: '/blog/best-ivf-centre-in-jaipur-success-rates', destination: '/blog/ivf-success-rates-in-jaipur', permanent: true },
       { source: '/blog/best-ivf-centre-in-jaipur-fertility-journey', destination: '/blog/ivf-fertility-journey-jaipur', permanent: true },
+      { source: '/blog/why-do-couples-choose-krisna-ivf-as-the-best-ivf-centre-in-jaipur', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/why-is-krisna-ivf-the-best-fertility-centre-in-jaipur-for-couples-planning-parenthood', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-center-jaipur-smart-fertility', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/why-is-krisna-ivf-considered-the-best-fertility-hospital-in-rajasthan', destination: '/best-ivf-center-in-jaipur', permanent: true },
     ];
   },
   

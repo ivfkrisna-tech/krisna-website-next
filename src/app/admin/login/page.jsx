@@ -1,7 +1,6 @@
 "use client"; // Rule 1: Client component hona zaruri hai
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Rule 2: next/navigation se import karein
-import Link from 'next/link';
 
 export default function LoginPage() {
   // State variables
@@ -96,10 +95,6 @@ const handleLogin = async (e) => {
           >
             {loading ? 'Logging in...' : 'Login'}
           </button>
-
-          <p style={{ textAlign: 'center', fontSize: '14px', color: '#6b7280', marginTop: '10px' }}>
-            Don't have an account? <Link href="/admin/signup" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>Sign Up</Link>
-          </p>
         </form>
       </div>
     </div>

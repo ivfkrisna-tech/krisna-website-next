@@ -9,8 +9,12 @@ export function middleware(request) {
   // 2. Agar user kisi bhi /admin waale page par ja raha hai
   if (path.startsWith('/admin')) {
     
-    // Agar user login ya signup page par ja raha hai
-    if (path === '/admin/login' || path === '/admin/signup') {
+    // If accessing /admin/signup, redirect to /admin/login
+    if (path === '/admin/signup') {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+
+    if (path === '/admin/login') {
       // Agar token PEHLE SE HAI, toh use login page mat dikhao, seedha dashboard bhej do
       if (token) {
         return NextResponse.redirect(new URL('/admin/dashboard', request.url));

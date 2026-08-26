@@ -12,6 +12,19 @@ const nextConfig = {
     ],
   },
   
+  async redirects() {
+    return [
+      { source: '/blog/best-ivf-centre-in-jaipur', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-fertility-center-in-jaipur-2026', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-fertility-center-in-jaipur-rajasthan', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-hospital-in-jaipur', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-hospital-in-jaipur-2026', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-centre-in-jaipur-a-comprehensive-guide-to-your-options', destination: '/best-ivf-center-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-centre-in-jaipur-success-rates', destination: '/blog/ivf-success-rates-in-jaipur', permanent: true },
+      { source: '/blog/best-ivf-centre-in-jaipur-fertility-journey', destination: '/blog/ivf-fertility-journey-jaipur', permanent: true },
+    ];
+  },
+  
   async headers() {
     return [
       {

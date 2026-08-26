@@ -70,13 +70,23 @@ export default async function sitemap() {
     }
   }
 
+  // Excluded / redirected blog slugs
+  const excludedSlugs = new Set([
+    'why-do-couples-choose-krisna-ivf-as-the-best-ivf-centre-in-jaipur',
+    'why-is-krisna-ivf-the-best-fertility-centre-in-jaipur-for-couples-planning-parenthood',
+    'best-ivf-center-jaipur-smart-fertility',
+    'why-is-krisna-ivf-considered-the-best-fertility-hospital-in-rajasthan',
+  ]);
+
   // Dynamic blog routes
-  const blogRoutes = allBlogs.map((blog) => ({
-    url: `${baseUrl}/blog/${blog.slug || blog._id}`,
-    lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
+  const blogRoutes = allBlogs
+    .filter((blog) => !excludedSlugs.has(blog.slug || blog._id))
+    .map((blog) => ({
+      url: `${baseUrl}/blog/${blog.slug || blog._id}`,
+      lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    }));
 
   return [...staticRoutes, ...blogRoutes];
 }

@@ -1,12 +1,14 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect } from 'react';
 import useReveal from '@/hooks/useReveal';
 
 export default function HomeContent() {
   useReveal();
-useEffect(() => {
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -37,7 +39,6 @@ useEffect(() => {
 
   return (
     <>
-      
       <main>
         {/* Hero Section */}
         <section className="hero-enhanced">
@@ -59,9 +60,9 @@ useEffect(() => {
               </div>
               <div style={{ marginTop: '40px', display: 'flex', alignItems: 'center', gap: '15px', justifyContent: 'flex-start' }}>
                 <div style={{ display: 'flex' }}>
-                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Happy Patient" style={{ width: '40px', borderRadius: '50%', border: '3px solid #fff' }} />
-                  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Happy Patient" style={{ width: '40px', borderRadius: '50%', border: '3px solid #fff', marginLeft: '-15px' }} />
-                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Happy Patient" style={{ width: '40px', borderRadius: '50%', border: '3px solid #fff', marginLeft: '-15px' }} />
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Happy Patient" width="40" height="40" loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '3px solid #fff' }} />
+                  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Happy Patient" width="40" height="40" loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '3px solid #fff', marginLeft: '-15px' }} />
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Happy Patient" width="40" height="40" loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '3px solid #fff', marginLeft: '-15px' }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
                   <b style={{ color: '#222', display: 'block', lineHeight: '1.2' }}>1,500+ Happy Families</b>
@@ -75,7 +76,16 @@ useEffect(() => {
             <div className="hero-img-col">
               <div className="hero-blob"></div>
               <div className="main-hero-img-box">
-                <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=1000&auto=format&fit=crop" alt="Mother and Baby sharing a happy moment" width="600" height="400" />
+                <Image 
+                  src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=1000&auto=format&fit=crop" 
+                  alt="Mother and Baby sharing a happy moment" 
+                  width={600} 
+                  height={400} 
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  style={{ width: '100%', height: 'auto', transform: 'scale(1.05)', transition: '0.5s' }}
+                />
               </div>
               <div className="glass-badge">
                 <div className="badge-icon"><i className="fa-solid fa-baby-carriage"></i></div>
@@ -174,7 +184,7 @@ useEffect(() => {
           <div className="why-section">
             <div className="why-grid">
               <div>
-                <img src="https://cdn.pixabay.com/photo/2016/07/24/13/03/baby-1538338_1280.jpg" style={{ borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} alt="Doctor counseling patient" loading="lazy" />
+                <img src="https://cdn.pixabay.com/photo/2016/07/24/13/03/baby-1538338_1280.jpg" width="600" height="400" style={{ borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', width: '100%', height: 'auto' }} alt="Doctor counseling patient" loading="lazy" />
               </div>
               <div>
                 <h2 style={{ marginBottom: '25px' }}>Why Choose <span style={{ color: 'var(--brand-pink)' }}>Krisna IVF?</span></h2>
@@ -290,7 +300,6 @@ useEffect(() => {
           <Link href="/contact" className="btn-primary" style={{ background: '#fff', color: 'var(--brand-teal)', boxShadow: 'none' }}>Book Appointment</Link>
         </section>
       </main>
-      
     </>
   );
 }

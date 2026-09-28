@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/clean_room_crtfd_lab.css";
 
 import Link from 'next/link';
 import Image from 'next/image';

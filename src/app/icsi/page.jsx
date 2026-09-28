@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/icsi.css";
 
 import Link from 'next/link';
 import useReveal from '@/hooks/useReveal';

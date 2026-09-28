@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Head from 'next/head';
+import '@/app/styles/ivf.css';
 
 export default function LocationPageTemplate({ city, nearbyAreas, localKeywords }) {
   const jsonLd = {

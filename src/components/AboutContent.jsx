@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/aboutus.css";
 
 import useReveal from '@/hooks/useReveal';
 import Link from 'next/link';

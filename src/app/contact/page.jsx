@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/contact.css";
 
 import useReveal from '@/hooks/useReveal';
 import { useState } from "react";

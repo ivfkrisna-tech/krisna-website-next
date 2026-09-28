@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/fertility_surgery.css";
 
 import Link from 'next/link';
 import useReveal from '@/hooks/useReveal';

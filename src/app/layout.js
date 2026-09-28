@@ -1,20 +1,5 @@
 import "./styles/global.css";
-import "./styles/icsi.css";
-import "./styles/ivf.css";
-import "./styles/iui.css";
-import "./styles/infertility_assessment.css";
-import "./styles/our_team.css";
-import "./styles/clean_room_crtfd_lab.css";
-import "./styles/aboutus.css";
-import "./styles/blog.css";
-import "./styles/certificates.css";
-import "./styles/contact.css";
-import "./styles/donor.css";
-import "./styles/equipment.css";
-import "./styles/faq.css";
-import "./styles/fertility_surgery.css";
 import "./styles/index.css";
-import "./styles/success.css";
 
 import Script from "next/script";
 
@@ -101,10 +86,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* FontAwesome */}
+        {/* Non-blocking FontAwesome for instant First Contentful Paint */}
         <link 
           rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
       </head>
       <body>

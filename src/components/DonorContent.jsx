@@ -1,4 +1,5 @@
 "use client";
+import "@/app/styles/donor.css";
 import Link from 'next/link';
 import useReveal from '@/hooks/useReveal';
 

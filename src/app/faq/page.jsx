@@ -1,3 +1,4 @@
+import "@/app/styles/faq.css";
 import Link from 'next/link';
 import connectDB from '@/lib/mongodb';
 import { FAQ } from '@/models/Data';

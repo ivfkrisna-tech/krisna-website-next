@@ -1,3 +1,4 @@
+import "@/app/styles/blog.css";
 import BlogCard from '@/components/BlogCard';
 import connectDB from '@/lib/mongodb';
 import { Blog } from '@/models/Data';
